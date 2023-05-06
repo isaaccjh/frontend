@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import ProductContext from './ProductContext';
+import ProductListing from "./ProductListing";
 
-function App() {
+import axios from "axios";
+
+const App = () => {
+  const url = "https://tgc-project3-express.onrender.com/api"
+  const [products, setProducts] = useState([]);
+
+  const context = {
+    getProducts: async () => {
+      const response = await axios.get(`${url}/api/lures`);
+      return response;
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ProductContext.Provider value={context}>
+      <React.Fragment>
+        <ProductListing />
+      </React.Fragment>
+    </ProductContext.Provider>
+  )
 }
 
 export default App;
