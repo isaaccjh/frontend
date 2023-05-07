@@ -10,8 +10,9 @@ const App = () => {
 
   const context = {
     getProducts: async () => {
-      const response = await axios.get(`${url}/api/lures`);
-      return response;
+      const response = await axios.get(`${url}/lures`);
+      console.log(response.data)
+      return response.data;
     }
   }
 

@@ -1,13 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import ProductContext from "./ProductContext"; 
 
 export default function ProductListing() {
     let context = useContext(ProductContext);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        async function getProducts() {
+            const allProducts = await context.getProducts();
+            setProducts(allProducts);
+        }
+
+        getProducts();
+    }, [context])
 
     return (
         <React.Fragment>
             <ul>
-                {context.getProducts().map(x => console.log(x))}
+                {products.map(p => (
+                    <li>{p.name}</li>
+                ))}
             </ul>
         </React.Fragment>
     )
