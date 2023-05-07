@@ -1,14 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
-import ProductContext from "./contexts/ProductContext"; 
+import LureContext from "./contexts/LureContext";
 
 export default function ProductListing() {
-    let context = useContext(ProductContext);
-    const [products, setProducts] = useState([]);
+    let context = useContext(LureContext);
+    const [lures, setLures] = useState([]);
 
     useEffect(() => {
         async function getProducts() {
-            const allProducts = await context.getProducts();
-            setProducts(allProducts);
+            const allLures = await context.getAllLures();
+            setLures(allLures);
         }
 
         getProducts();
@@ -17,7 +17,7 @@ export default function ProductListing() {
     return (
         <React.Fragment>
             <ul>
-                {products.map(p => (
+                {lures.map(p => (
                     <li>{p.name}</li>
                 ))}
             </ul>

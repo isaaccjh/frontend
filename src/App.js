@@ -1,27 +1,28 @@
 import React, { useState } from "react";
-import ProductContext from './contexts/ProductContext';
 import ProductListing from "./ProductListing";
 
-import axios from "axios";
+import LureProvider from "./providers/LureProvider";
+
+
 
 const App = () => {
-  const url = "https://tgc-project3-express.onrender.com/api"
-  const [products, setProducts] = useState([]);
+  // const url = "https://tgc-project3-express.onrender.com/api"
+  // const [products, setProducts] = useState([]);
 
-  const context = {
-    getProducts: async () => {
-      const response = await axios.get(`${url}/lures`);
-      console.log(response.data)
-      return response.data;
-    }
-  }
+  // const context = {
+  //   getProducts: async () => {
+  //     const response = await axios.get(`${url}/lures`);
+  //     console.log(response.data)
+  //     return response.data;
+  //   }
+  // }
 
   return (
-    <ProductContext.Provider value={context}>
+    <LureProvider>
       <React.Fragment>
         <ProductListing />
       </React.Fragment>
-    </ProductContext.Provider>
+    </LureProvider>
   )
 }
 
