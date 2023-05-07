@@ -8,6 +8,7 @@ export default function LureProvider(props) {
     const lureContexts = {
         getAllLures: async () => {
             const response = await axios.get(`${url}/lures`);
+            console.log(response.data);
             return response.data;
         }
     }
