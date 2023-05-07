@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import LureContext from "./contexts/LureContext";
+import "./index.css"
 
 export default function ProductListing() {
     let context = useContext(LureContext);
@@ -18,7 +19,7 @@ export default function ProductListing() {
         <React.Fragment>
             <ul>
                 {lures.map(p => (
-                    <li>{p.name}</li>
+                    <li className="text-3xl text-red-400">{p.name}</li>
                 ))}
             </ul>
         </React.Fragment>

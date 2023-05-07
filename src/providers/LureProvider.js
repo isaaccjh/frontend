@@ -1,5 +1,6 @@
 import LureContext from "../contexts/LureContext";
 import axios from "axios";
+import "../index.css"
 
 const url = "https://tgc-project3-express.onrender.com/api";
 

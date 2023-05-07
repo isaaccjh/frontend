@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ProductListing from "./ProductListing";
 
 import LureProvider from "./providers/LureProvider";
-
+import "./index.css"
 
 
 const App = () => {
