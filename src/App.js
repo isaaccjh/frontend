@@ -1,28 +1,27 @@
 import React, { useState } from "react";
 import ProductListing from "./ProductListing";
 
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+
 import LureProvider from "./providers/LureProvider";
 import "./index.css"
 
+import Navbar from "./components/Navbar";
+
 
 const App = () => {
-  // const url = "https://tgc-project3-express.onrender.com/api"
-  // const [products, setProducts] = useState([]);
-
-  // const context = {
-  //   getProducts: async () => {
-  //     const response = await axios.get(`${url}/lures`);
-  //     console.log(response.data)
-  //     return response.data;
-  //   }
-  // }
 
   return (
-    <LureProvider>
-      <React.Fragment>
-        <ProductListing />
-      </React.Fragment>
-    </LureProvider>
+    <React.Fragment>
+      <Router>
+        <Navbar />
+          <Routes>
+            <Route path="/" element={<LureProvider>
+              <ProductListing />
+            </LureProvider>}/>
+          </Routes>
+      </Router>
+    </React.Fragment>
   )
 }
 
