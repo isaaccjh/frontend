@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import ProductContext from "./ProductContext"; 
+import ProductContext from "./contexts/ProductContext"; 
 
 export default function ProductListing() {
     let context = useContext(ProductContext);
