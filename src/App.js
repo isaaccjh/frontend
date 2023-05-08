@@ -16,9 +16,11 @@ const App = () => {
       <Router>
         <Navbar />
           <Routes>
-            <Route path="/" element={<LureProvider>
-              <ProductListing />
-            </LureProvider>}/>
+            <Route path="/" element={
+                <LureProvider>
+                  <ProductListing />
+                </LureProvider>} 
+              />
           </Routes>
       </Router>
     </React.Fragment>
