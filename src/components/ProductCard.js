@@ -3,8 +3,7 @@ import React from "react";
 
 export default function ProductCard(props) {
 
-    
-
+    console.log(props.variants);
     return (<>
         <a>
             <div >
