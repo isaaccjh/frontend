@@ -13,6 +13,10 @@ export default function LureProvider(props) {
         getAllVariants: async () => {
             const response = await axios.get(`${url}/lures/variants`);
             return response.data
+        },
+        getLureById: async (lureId) => {
+            const response = await axios.get(`${url}/lures/${lureId}`);
+            return response.data;
         }
     }
 

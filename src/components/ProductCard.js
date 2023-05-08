@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function ProductCard(props) {
 
     return (<>
-        <Link>
+        <Link to={`${props.product.id}`}>
             <div className="group shadow mt-2">
                 <div className="">
                     {props.variants && props.variants.length > 0 ? (

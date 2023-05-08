@@ -1,13 +1,17 @@
 import React from "react";
-import ProductListing from "./pages/ProductListing";
 
+// REACT ROUTER DOM
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 import LureProvider from "./providers/LureProvider";
 import "./index.css"
 
 import Navbar from "./components/Navbar";
 
+//PAGES
+import ProductListing from "./pages/ProductListing";
+import ProductPage from "./pages/ProductPage";
 
 const App = () => {
 
@@ -16,9 +20,14 @@ const App = () => {
       <Router>
         <Navbar />
           <Routes>
-            <Route path="/" element={
+            <Route path="/products" element={
                 <LureProvider>
                   <ProductListing />
+                </LureProvider>} 
+              />
+              <Route path="/products/:lure_id" element={
+                <LureProvider>
+                  <ProductPage />
                 </LureProvider>} 
               />
           </Routes>
