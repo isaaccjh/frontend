@@ -30,7 +30,13 @@ export default function ProductListing() {
         <React.Fragment>
             <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {lures.map(p => (
-                   <li> <ProductCard product={p} variants={variants.filter(v => v.lure_id === p.id)}/> </li>
+                   <li> 
+                    <ProductCard 
+                            product={p} 
+                            variants={variants.filter(v => v.lure_id === p.id)}
+                            lures={lures}
+                    /> 
+                   </li>
                 ))}
             </ul>
         </React.Fragment>
