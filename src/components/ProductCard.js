@@ -6,10 +6,10 @@ export default function ProductCard(props) {
 
     return (<>
         <Link to={`${props.product.id}`}>
-            <div className="group shadow mt-2">
+            <div className="group shadow mt-2 h-[295px] grid">
                 <div className="">
                     {props.variants && props.variants.length > 0 ? (
-                        <img className="h-[75px]"src={props.variants[0].image_url} alt="" />
+                        <img className=""src={props.variants[0].image_url} alt="" />
                     ) : (
                         <p>No variants available</p>
                     )}
