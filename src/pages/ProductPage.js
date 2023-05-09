@@ -26,10 +26,15 @@ export default function ProductPage() {
     }, [context, lure_id])
 
     return (<React.Fragment>
-        <h1>Welcome to product page of {lure.name} </h1>
+        {/* <h1>Welcome to product page of {lure.name} </h1>
         <h3>
             Basic Colour Display:
             {variants.map(v => <p>{v.colour.name}</p>)}
-        </h3>
+        </h3> */}
+        <section>
+            <div>
+                
+            </div>
+        </section>
     </React.Fragment>)
 }
