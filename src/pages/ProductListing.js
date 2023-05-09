@@ -15,7 +15,7 @@ export default function ProductListing() {
             const allLures = await context.getAllLures();
             setLures(allLures);
         }
-        getProducts(); 
+        getProducts();
     }, [context]);
 
     useEffect(() => {
@@ -28,17 +28,19 @@ export default function ProductListing() {
 
     return (
         <React.Fragment>
-            <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {lures.map(p => (
-                   <li> 
-                    <ProductCard 
-                            product={p} 
-                            variants={variants.filter(v => v.lure_id === p.id)}
-                            lures={lures}
-                    /> 
-                   </li>
-                ))}
-            </ul>
+            <div>
+                <ul className="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                    {lures.map(p => (
+                        <li>
+                            <ProductCard
+                                product={p}
+                                variants={variants.filter(v => v.lure_id === p.id)}
+                                lures={lures}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </React.Fragment>
     )
 }
