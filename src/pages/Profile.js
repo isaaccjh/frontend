@@ -1,6 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import jwtDecode from "jwt-decode";
 
 import UserContext from "../contexts/UserContext";
 
@@ -18,7 +16,7 @@ export default function Profile() {
 
         getProfileDetails();
         console.log(userDetails)
-    })
+    }, [context, userDetails])
     
     return (<>
         <div>Profile</div>
