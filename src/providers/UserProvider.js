@@ -10,6 +10,18 @@ export default function UserProvider(props) {
             const response = await axios.post(`${url}/users/register`);
             return response.data;
         },
+        loginUser: async (data) => {
+            try {
+                const response = await axios.post(`${url}/users/login`, data);
+                // console.log("refreshToken:", response.data.refreshToken);
+                // console.log("accessToken:", response.data.accessToken);
+                return response.data
+
+            } catch (e) {
+                console.log(e);
+            }
+            
+        }
     }
 
 
