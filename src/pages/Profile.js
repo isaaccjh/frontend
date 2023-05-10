@@ -11,14 +11,11 @@ export default function Profile() {
         const getProfileDetails = async () => {
             const details = await context.getProfile();
             setUserDetails(details);
-            return userDetails;
         }
 
         getProfileDetails();
-        console.log(userDetails)
-    }, [context, userDetails])
+    }, [context])
 
-    console.log(userDetails);
 
     return (<>
         <div>Profile</div>

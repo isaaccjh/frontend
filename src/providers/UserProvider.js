@@ -5,6 +5,7 @@ import "../index.css";
 const url = "https://tgc-project3-express.onrender.com/api";
 
 export default function UserProvider(props) {
+
     const userContexts = {
         registerUser: async () => {
             const response = await axios.post(`${url}/users/register`);
@@ -30,12 +31,23 @@ export default function UserProvider(props) {
             }
             const response = await axios.get(`${url}/users/profile`, config);
             return response.data;
+        },
+        logout: async () => {
+            const refreshToken = localStorage.getItem("refreshToken");
+            if (refreshToken) {
+                const response = await axios.post(`${url}/users/logout`, {
+                    "refreshToken": refreshToken
+                });
+                return response.data.message;
+            } else {
+                return false;
+            }
         }
     }
 
 
     return (
-        <UserContext.Provider value={userContexts}>
+        <UserContext.Provider value={ userContexts }>
             {props.children}
         </UserContext.Provider>
     )
