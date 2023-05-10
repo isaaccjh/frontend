@@ -33,6 +33,9 @@ export default function ProductPage() {
         </h3> */}
         <section>
             <div>
+                {/* <img /> */}
+            </div>
+            <div>
                 
             </div>
         </section>

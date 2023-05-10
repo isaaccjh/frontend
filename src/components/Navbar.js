@@ -6,18 +6,18 @@ export default function Navbar() {
             <div className="flex justify-between">
                 <ul className="flex items-center justify-start gap-8 p-5">
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">Products</Link></li>
-                    <li><Link to="/">About Us</Link></li>
-                    <li><Link to="/">Contact Us</Link></li>
+                    <li><Link to="/products">Products</Link></li>
+                    <li><Link to="/about-us">About Us</Link></li>
+                    <li><Link to="/contact-us">Contact Us</Link></li>
                 </ul>
 
 
                 <div className="flex items-center gap-8 p-5">
                     <div>
-                        <Link>Login</Link>
+                        <Link to="/login">Login</Link>
                     </div>
                     <div>
-                        <Link>Register</Link>
+                        <Link to="/register">Register</Link>
                     </div>
                 </div>
             </div>
