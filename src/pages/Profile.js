@@ -17,7 +17,9 @@ export default function Profile() {
         getProfileDetails();
         console.log(userDetails)
     }, [context, userDetails])
-    
+
+    console.log(userDetails);
+
     return (<>
         <div>Profile</div>
     </>)

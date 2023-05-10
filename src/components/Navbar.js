@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import jwtDecode from "jwt-decode";
 
 
 export default function Navbar() {
-    const [user, setUser] = useState({"d": "d"});
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const token = localStorage.getItem("accessToken");
+        if (token) {
+            setUser(jwtDecode(token));
+        } else {
+            setUser({});
+        }
+    }) 
 
     return (<>
         <nav className="shadow sticky">
@@ -16,7 +26,7 @@ export default function Navbar() {
                 </ul>
 
 
-                {user === {} ?
+                {user === {}?
                     <div className="flex items-center gap-8 p-5">
                         <div>
                             <Link to="/login">Login</Link>
@@ -24,7 +34,8 @@ export default function Navbar() {
                         <div>
                             <Link to="/register">Register</Link>
                         </div>
-                    </div> :
+                    </div> 
+                    :
                     <div className="flex items-center gap-8 p-5">
                         <div>
                             <Link to="/profile">Profile</Link>
