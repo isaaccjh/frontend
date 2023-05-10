@@ -6,6 +6,7 @@ import UserContext from "../contexts/UserContext";
 import { checkPassword } from "../validator/password";
 
 export default function Login() {
+    const navigate = useNavigate();
     let context = useContext(UserContext);
     const [formState, setFormState] = useState({
         "email": "",
@@ -27,8 +28,9 @@ export default function Login() {
             });
             localStorage.setItem("accessToken", response.accessToken);
             localStorage.setItem("refreshToken", response.refreshToken);
-            
             console.log(localStorage)
+            
+            navigate("/products")
         };
        
     }
@@ -55,6 +57,6 @@ export default function Login() {
                 onChange={updateFormField}
             />
         </div>
-        <button className=" bg-blue-600" onClick={submitForm}>Login</button>
+        <button type="submit" onClick={submitForm} className=" bg-blue-600">Login</button>
     </>)
 }

@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 import ProductListing from "./pages/ProductListing";
 import ProductPage from "./pages/ProductPage";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 
 const App = () => {
 
@@ -33,11 +34,17 @@ const App = () => {
                   <ProductPage />
                 </LureProvider>} 
               />
-              <Route path="/login/" element={
+              <Route path="/login" element={
                 <UserProvider>
                   <Login />
                 </UserProvider>} 
               />
+              <Route path="/profile" element={
+                <UserProvider>
+                  <Profile />
+                </UserProvider>} 
+              />
+
           </Routes>
       </Router>
     </React.Fragment>

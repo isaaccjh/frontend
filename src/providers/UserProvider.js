@@ -19,8 +19,18 @@ export default function UserProvider(props) {
 
             } catch (e) {
                 console.log(e);
+            }   
+        },
+        getProfile: async () => {
+            const headers = {
+                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
             }
-            
+            const config = {
+                headers: headers
+            }
+            const response = await axios.get(`${url}/users/profile`, config);
+            return response.data;
+
         }
     }
 
