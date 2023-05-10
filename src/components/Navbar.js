@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+
 
 export default function Navbar() {
+    const [user, setUser] = useState({"d": "d"});
+
     return (<>
         <nav className="shadow sticky">
             <div className="flex justify-between">
@@ -12,14 +16,24 @@ export default function Navbar() {
                 </ul>
 
 
-                <div className="flex items-center gap-8 p-5">
-                    <div>
-                        <Link to="/login">Login</Link>
+                {user === {} ?
+                    <div className="flex items-center gap-8 p-5">
+                        <div>
+                            <Link to="/login">Login</Link>
+                        </div>
+                        <div>
+                            <Link to="/register">Register</Link>
+                        </div>
+                    </div> :
+                    <div className="flex items-center gap-8 p-5">
+                        <div>
+                            <Link to="/profile">Profile</Link>
+                        </div>
+                        <div>
+                            <Link to="/logout">Logout</Link>
+                        </div>
                     </div>
-                    <div>
-                        <Link to="/register">Register</Link>
-                    </div>
-                </div>
+                }
             </div>
 
         </nav>

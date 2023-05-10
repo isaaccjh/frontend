@@ -30,7 +30,6 @@ export default function UserProvider(props) {
             }
             const response = await axios.get(`${url}/users/profile`, config);
             return response.data;
-
         }
     }
 
