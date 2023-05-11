@@ -42,6 +42,9 @@ export default function UserProvider(props) {
             } else {
                 return false;
             }
+        },
+        checkIfLoggedIn: () => {
+            return localStorage.getItem("accessToken") ? true : false; 
         }
     }
 
