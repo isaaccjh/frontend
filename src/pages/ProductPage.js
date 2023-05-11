@@ -7,6 +7,7 @@ export default function ProductPage() {
     const { lure_id } = useParams();
     const [lure, setLure] = useState({});
     const [variants, setVariants] = useState([]);
+    const [displayedLure, setDisplayedLure] = useState(variants[0]);
 
     const context = useContext(LureContext);
     useEffect(() => {
@@ -21,23 +22,24 @@ export default function ProductPage() {
         const getLureVariants = async () => {
             const variants = await context.getAllVariantsByLureId(lure_id);
             setVariants(variants);
+            setDisplayedLure(variants[0]);
         }
         getLureVariants();
     }, [context, lure_id])
 
+
     return (<React.Fragment>
-        {/* <h1>Welcome to product page of {lure.name} </h1>
-        <h3>
-            Basic Colour Display:
-            {variants.map(v => <p>{v.colour.name}</p>)}
-        </h3> */}
-        <section>
-            <div>
-                {/* <img /> */}
-            </div>
-            <div>
-                
-            </div>
-        </section>
+        {displayedLure && variants.length > 0 ?
+            <section className="flex h-screen items-center">
+                <div className="">
+                    <div>
+                        <h1 className="text-3xl text-bold p-4">{lure.name}</h1>
+                    </div>
+                    <div>
+                        <img className="w-1/2" src={displayedLure.image_url} alt="" />
+                    </div>
+                </div>
+            </section>
+            : <p>Loading...</p>}
     </React.Fragment>)
 }
