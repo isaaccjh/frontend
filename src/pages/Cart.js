@@ -1,5 +1,5 @@
 import "../index.css"
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 
 import CartContext from "../contexts/CartContext"
 
@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 export default function Cart() {
     const [userId, setUserId] = useState();
     const [cartItems, setCartItems] = useState([]);
-    const [quantity, setQuantity] = useState(0);
     const context = useContext(CartContext);
 
     useEffect(() => {
@@ -24,20 +23,43 @@ export default function Cart() {
         const getCart = async () => {
             const cartItems = await context.getCart(userId);
             setCartItems(cartItems);
-            console.log(cartItems);
+            console.log(cartItems)
         }
         getCart();
     }, [context, userId])
 
-    const onQuantityUpdate = (itemId) => {
-        return;
+    // const updateQuantity = useCallback(async (e, variantId) => {
+    //     console.log(e.target);
+    // }, []) 
+    const updateQuantity = async (e, itemId) => {
+        const itemToUpdate = cartItems.filter(item => item.id === itemId);
+        console.log(itemToUpdate);
+        const updatedCart = cartItems.map(item => {
+            if (item.id === itemId) {
+               return {
+                ...item,
+                quantity: parseInt(e.target.value)
+               } 
+            }
+            return item;
+        })
+        setCartItems(updatedCart)
+        console.log(localStorage.getItem("accessToken"))
+        console.log("user:",itemToUpdate[0].user_id);
+        console.log("variant:", itemToUpdate[0].variant_id);
+        console.log(e.target.value);
+        
+        const update = await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, e.target.value);
+        console.log(update);
+
+
     }
 
     return (<>
         <h1 className="text-3xl font-bold mt-5 flex justify-center">Your Cart</h1>
         <ul className="flex flex-col items-center mt-4">
             {cartItems && cartItems.length > 0 ? cartItems.map(item => (
-                <li className="p-14 pl-10 m-2 border-2 rounded-md w-3/4 flex items-center h-[95px] gap-3 bg-slate-50">
+                <li key={item.id} className="p-14 pl-10 m-2 border-2 rounded-md w-3/4 flex items-center h-[95px] gap-3 bg-slate-50">
                     <img src={item.variant.thumbnail_url} alt="" />
                     <div className="flex flex-col">
                     <div >
@@ -55,11 +77,11 @@ export default function Cart() {
                     
                     <div className="flex flex-1 items-center justify-end gap-4">
                         <button>&minus;</button>
-                        <div><input onChange={null} name="quantity" type="number" value={item.quantity} className="h-8 text-center w-11" /></div>
+                        <input onChange={(e) => updateQuantity(e, item.id)} name="quantity" type="number" value={item.quantity} className="h-8 text-center w-11" />
                         <button>+</button>
                     </div>
                 </li>
-            )) : <p>Cart is empty!</p>}
+            )) : <p className="text-2xl">Cart is empty!</p>}
         </ul>
         <Link to="/checkout"className="flex justify-center">
         <button className="flex p-4 border-2 rounded-md mt-3 justify-center hover:bg-slate-500 bg-slate-100 w-1/3">Checkout</button>
