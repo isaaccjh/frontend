@@ -15,8 +15,9 @@ export default function Navbar() {
         } else {
             setUser(null);
         }
+       
     }, [])
-
+    console.log(user);
     return (<>
         <nav className="shadow sticky">
             <div className="flex justify-between">
@@ -30,6 +31,9 @@ export default function Navbar() {
 
                 {context.checkIfLoggedIn() ?
                     <div className="flex items-center gap-8 p-5">
+                        <div>
+                            <Link to="/cart/:user_id">Cart</Link>
+                        </div>
                         <div>
                             <Link to="/profile">Profile</Link>
                         </div>

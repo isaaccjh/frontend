@@ -17,6 +17,7 @@ import ProductPage from "./pages/ProductPage";
 import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import Profile from "./pages/Profile";
+import Cart from "./pages/Cart";
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -25,26 +26,23 @@ const App = () => {
     <React.Fragment>
       <Router>
         <UserProvider>
-        <Navbar/>
-        <Routes>
-          <Route path="/products" element={
-            <LureProvider>
-              <ProductListing />
-            </LureProvider>}
-          />
-          <Route path="/products/:lure_id" element={
-            <LureProvider>
-              <ProductPage />
-            </LureProvider>}
-          />
-          <Route path="/login" element={<Login />}
-          />
-          <Route path="/profile" element={<Profile />}
-          />
-          <Route path="/logout" element={<Logout />}
-          />
-
-        </Routes>
+          <Navbar />
+          <Routes>
+            <Route path="/products" element={
+              <LureProvider>
+                <ProductListing />
+              </LureProvider>}
+            />
+            <Route path="/products/:lure_id" element={
+              <LureProvider>
+                <ProductPage />
+              </LureProvider>}
+            />
+            <Route path="/login" element={<Login />}/>
+            <Route path="/profile" element={<Profile />}/>
+            <Route path="/logout" element={<Logout />}/>
+            <Route path="/cart" element={<Cart />} />
+          </Routes>
         </UserProvider>
       </Router>
     </React.Fragment>

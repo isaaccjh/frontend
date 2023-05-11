@@ -28,7 +28,6 @@ export default function Login() {
             });
             localStorage.setItem("accessToken", response.accessToken);
             localStorage.setItem("refreshToken", response.refreshToken);
-            console.log(localStorage)
             
             navigate("/products")
         };
