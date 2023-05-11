@@ -32,7 +32,7 @@ export default function Navbar() {
                 {context.checkIfLoggedIn() ?
                     <div className="flex items-center gap-8 p-5">
                         <div>
-                            <Link to="/cart/:user_id">Cart</Link>
+                            <Link to="/cart">Cart</Link>
                         </div>
                         <div>
                             <Link to="/profile">Profile</Link>

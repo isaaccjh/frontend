@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.css"
 
 // REACT ROUTER DOM
@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // PROVIDERS
 import LureProvider from "./providers/LureProvider";
 import UserProvider from "./providers/UserProvider";
+import CartProvider from "./providers/CartProvider";
 
 // COMPONENTS
 import Navbar from "./components/Navbar";
@@ -20,7 +21,6 @@ import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 
 const App = () => {
-  const [user, setUser] = useState(null)
 
   return (
     <React.Fragment>
@@ -41,7 +41,8 @@ const App = () => {
             <Route path="/login" element={<Login />}/>
             <Route path="/profile" element={<Profile />}/>
             <Route path="/logout" element={<Logout />}/>
-            <Route path="/cart" element={<Cart />} />
+            
+            <Route path="/cart" element={<CartProvider><Cart /></CartProvider>} />
           </Routes>
         </UserProvider>
       </Router>

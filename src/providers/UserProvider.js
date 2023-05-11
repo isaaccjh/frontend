@@ -1,6 +1,5 @@
 import UserContext from "../contexts/UserContext";
 import axios from "axios";
-import "../index.css";
 
 const url = "https://tgc-project3-express.onrender.com/api";
 
