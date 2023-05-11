@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 export default function Cart() {
     const [userId, setUserId] = useState();
     const [cartItems, setCartItems] = useState([]);
+    const [quantity, setQuantity] = useState(0);
     const context = useContext(CartContext);
 
     useEffect(() => {
@@ -27,6 +28,10 @@ export default function Cart() {
         }
         getCart();
     }, [context, userId])
+
+    const onQuantityUpdate = (itemId) => {
+        return;
+    }
 
     return (<>
         <h1 className="text-3xl font-bold mt-5 flex justify-center">Your Cart</h1>
@@ -47,8 +52,11 @@ export default function Cart() {
                         </div>
                     </div>
                     </div>
-                    <div>
-                        <div><input type="number" className="h-8 w-14" /></div>
+                    
+                    <div className="flex flex-1 items-center justify-end gap-4">
+                        <button>&minus;</button>
+                        <div><input onChange={null} name="quantity" type="number" value={item.quantity} className="h-8 text-center w-11" /></div>
+                        <button>+</button>
                     </div>
                 </li>
             )) : <p>Cart is empty!</p>}
