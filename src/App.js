@@ -24,6 +24,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Router>
+        <UserProvider>
         <Navbar/>
         <Routes>
           <Route path="/products" element={
@@ -36,23 +37,15 @@ const App = () => {
               <ProductPage />
             </LureProvider>}
           />
-          <Route path="/login" element={
-            <UserProvider>
-              <Login />
-            </UserProvider>}
+          <Route path="/login" element={<Login />}
           />
-          <Route path="/profile" element={
-            <UserProvider>
-              <Profile />
-            </UserProvider>}
+          <Route path="/profile" element={<Profile />}
           />
-          <Route path="/logout" element={
-            <UserProvider>
-              <Logout />
-            </UserProvider>}
+          <Route path="/logout" element={<Logout />}
           />
 
         </Routes>
+        </UserProvider>
       </Router>
     </React.Fragment>
   )
