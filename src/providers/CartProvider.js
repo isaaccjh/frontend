@@ -9,26 +9,39 @@ export default function CartProvider(props) {
         getCart: async (userId) => {
             const headers = {
                 'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
-            }
+            };
             const config = {
                 headers: headers
-            }
+            };
             const response = await axios.get(`${url}/carts/${userId}`, config);
             return response.data;
         },
         updateQuantity: async (userId, variantId, newQuantity) => {
             const headers = {
                 'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
-            }
+            };
             const config = {
                 headers: headers
-            }
+            };
             const response = await axios.post(`${url}/carts/update`, {
                 "quantity": newQuantity,
                 "userId": userId,
                 "variantId": variantId
             }, config);
             return response.data;
+        },
+        removeFromCart: async (userId, variantId) => {
+            const headers = {
+                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+            };
+            const config = {
+                headers: headers
+            };
+            const response = await axios.post(`${url}/carts/delete`, {
+                "userId": userId,
+                "variantId": variantId
+            }, config);
+            return response.data
         }
     }
 
