@@ -33,7 +33,6 @@ export default function Cart() {
     // }, []) 
     const updateQuantity = async (e, itemId) => {
         const itemToUpdate = cartItems.filter(item => item.id === itemId);
-        console.log(itemToUpdate);
         const updatedCart = cartItems.map(item => {
             if (item.id === itemId) {
                return {
@@ -44,15 +43,37 @@ export default function Cart() {
             return item;
         })
         setCartItems(updatedCart)
-        console.log(localStorage.getItem("accessToken"))
-        console.log("user:",itemToUpdate[0].user_id);
-        console.log("variant:", itemToUpdate[0].variant_id);
-        console.log(e.target.value);
-        
-        const update = await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, e.target.value);
-        console.log(update);
+        await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, e.target.value);
+    }
 
+    const addQuantity = async (itemId) => {
+        const itemToUpdate = cartItems.filter(item => item.id === itemId);
+        const updatedCart = cartItems.map(item => {
+            if (item.id === itemId) {
+                return {
+                    ...item,
+                    quantity: item.quantity + 1
+                }
+            }
+            return item;
+        })
+        setCartItems(updatedCart);
+        await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, (itemToUpdate[0].quantity + 1))
+    }
 
+    const minusQuantity = async (itemId) => {
+        const itemToUpdate = cartItems.filter(item => item.id === itemId);
+        const updatedCart = cartItems.map(item => {
+            if (item.id === itemId) {
+                return {
+                    ...item,
+                    quantity: item.quantity -1 
+                }
+            }
+            return item;
+        })
+        setCartItems(updatedCart);
+        await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, (itemToUpdate[0].quantity - 1))
     }
 
     return (<>
@@ -76,9 +97,9 @@ export default function Cart() {
                     </div>
                     
                     <div className="flex flex-1 items-center justify-end gap-4">
-                        <button>&minus;</button>
+                        <button onClick={() => minusQuantity(item.id)}>&minus;</button>
                         <input onChange={(e) => updateQuantity(e, item.id)} name="quantity" type="number" value={item.quantity} className="h-8 text-center w-11" />
-                        <button>+</button>
+                        <button onClick={() => addQuantity(item.id)}>+</button>
                     </div>
                 </li>
             )) : <p className="text-2xl">Cart is empty!</p>}
