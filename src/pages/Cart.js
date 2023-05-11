@@ -117,7 +117,7 @@ export default function Cart() {
                 )
             }) : <p className="text-2xl">Cart is empty!</p>}
         </ul>
-        <hr />
+        <hr className="my-4"/>
         <div className="flex justify-center">
                 <Link className="flex p-4 border-2 rounded-md mt-3 justify-center hover:bg-slate-500 bg-slate-100 w-1/3"to="/checkout">Checkout</Link>
         </div>

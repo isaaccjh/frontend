@@ -30,24 +30,26 @@ export default function ProductPage() {
     const changeDisplay = (variantId) => {
         const newDisplay = variants.filter(variant => variant.id === variantId);
         setDisplayedLure(newDisplay[0]);
-        console.log(displayedLure);
     }
+    console.log(lure);
+    console.log(variants);
+    console.log(displayedLure);
 
 
     return (<React.Fragment>
-        {displayedLure && variants.length > 0 ?
+        {displayedLure && lure && variants.length > 0 ?
             <section>
                 <div className="flex flex-col items-center h-2/6">
                     <div>
-                        <h1 className="text-3xl text-bold p-4">{lure.name}</h1>
+                        <h1 className="text-3xl text-bold p-4">{displayedLure?.lure?.name}</h1>
                     </div>
                     <div className="shadow-md rounded-lg">
-                        <img className="w-full h-[200px]" src={displayedLure.image_url} alt="" />
+                        <img className="w-full h-[200px]" src={displayedLure?.image_url} alt="" />
                     </div>
                 </div>
                 <div className="flex justify-center mt-3">
                     {variants.map(variant => {
-                        if (variant.colour.name === displayedLure.colour.name) {
+                        if (variant?.colour?.name === displayedLure?.colour?.name) {
                             return (
                                 <button
                                     key={variant.id}
@@ -63,20 +65,19 @@ export default function ProductPage() {
                     })}
                 </div>
                 <div>
-                    <div className="px-10 mt-4">
-                        {lure.description}
-                    </div>
                     <div className="flex">
                         <div className="flex flex-col items-end px-20">
                             <div className="border-2 p-4 rounded-md">
-                                Cost: ${displayedLure.cost / 100}
+                                Cost: ${displayedLure?.cost / 100}
+                                Property: {displayedLure?.property?.name}
+                                Series: {lure?.serie?.name} SERIES
                             </div>
                         </div>
                         <div className="flex flex-col items-start px-10 mr-10">
                             <div className="border-2 p-4 rounded-md">
                                 Specifications:
                                 <div className="text-sm">
-                                    Depth: {lure.depth === "0" ? "All" : lure.depth}
+                                    Depth: {lure.depth === "0" ? "All depths" : `${lure.depth}m`}
                                 </div>
                                 <div className="text-sm">
                                     Hook: {lure.hook}
@@ -93,7 +94,12 @@ export default function ProductPage() {
                             </div>
                         </div>
                     </div>
+                    <div className="px-10 mt-4">
+                        {lure.description}
+                    </div>
                 </div>
+
+                <button className="border-2 p-2 bg-slate-100">Add to cart</button>
             </section>
             : <p>Loading...</p>}
     </React.Fragment>)
