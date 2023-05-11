@@ -28,7 +28,7 @@ export default function Navbar() {
                 </ul>
 
 
-                {context.checkIfLoggedIn() ?
+                {user ?
                     <div className="flex items-center gap-8 p-5">
                         <div>
                             <Link to="/cart">Cart</Link>
