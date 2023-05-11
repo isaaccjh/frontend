@@ -47,6 +47,9 @@ export default function Cart() {
                         </div>
                     </div>
                     </div>
+                    <div>
+                        <div><input type="number" className="h-8 w-14" /></div>
+                    </div>
                 </li>
             )) : <p>Cart is empty!</p>}
         </ul>
