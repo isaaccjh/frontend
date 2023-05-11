@@ -44,8 +44,6 @@ export default function ProductPage() {
             userId = jwtDecode(token).id;
         };
         const response = await cartContext.addToCart(userId, displayedLure.id, quantity);
-        console.log(response);
-
     } 
 
     const updateQuantity = e => {

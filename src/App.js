@@ -11,6 +11,7 @@ import CartProvider from "./providers/CartProvider";
 
 // COMPONENTS
 import Navbar from "./components/Navbar";
+import SearchBar from "./components/SearchBar";
 
 //PAGES
 import ProductListing from "./pages/ProductListing";
@@ -28,6 +29,7 @@ const App = () => {
         <UserProvider>
           <CartProvider>
             <Navbar />
+            <SearchBar />
             <Routes>
               <Route path="/products" element={
                 <LureProvider>
