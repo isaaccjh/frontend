@@ -17,7 +17,6 @@ export default function Navbar() {
         }
        
     }, [])
-    console.log(user);
     return (<>
         <nav className="shadow sticky">
             <div className="flex justify-between">
