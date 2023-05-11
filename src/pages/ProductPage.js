@@ -3,10 +3,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import LureContext from "../contexts/LureContext";
 
+import jwtDecode from "jwt-decode";
+
 export default function ProductPage() {
     const { lure_id } = useParams();
     const [lure, setLure] = useState({});
     const [variants, setVariants] = useState([]);
+    const [quantity, setQuantity] = useState(0);
     const [displayedLure, setDisplayedLure] = useState(variants[0]);
 
     const context = useContext(LureContext);
@@ -31,9 +34,21 @@ export default function ProductPage() {
         const newDisplay = variants.filter(variant => variant.id === variantId);
         setDisplayedLure(newDisplay[0]);
     }
-    console.log(lure);
-    console.log(variants);
-    console.log(displayedLure);
+    
+    const addToCart = async (itemId) => {
+        let userId = null;
+        const token = localStorage.getItem("accessToken");
+        if (token) {
+            userId = jwtDecode(token).id;
+        };
+        const response = await context.addToCart(userId, displayedLure.id, quantity);
+        console.log(response);
+
+    } 
+
+    const updateQuantity = e => {
+        setQuantity(e.target.value);
+    }
 
 
     return (<React.Fragment>
@@ -99,7 +114,8 @@ export default function ProductPage() {
                     </div>
                 </div>
 
-                <button className="border-2 p-2 bg-slate-100">Add to cart</button>
+                <button onClick={() =>addToCart(displayedLure.id)} className="border-2 p-2 bg-slate-100">Add to cart</button>
+                <input onChange={updateQuantity} name="quantity" type="number" value={quantity} className="h-8 text-center w-11" />
             </section>
             : <p>Loading...</p>}
     </React.Fragment>)

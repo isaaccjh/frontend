@@ -42,6 +42,20 @@ export default function CartProvider(props) {
                 "variantId": variantId
             }, config);
             return response.data
+        },
+        addToCart: async (userId, variantId, quantity) => {
+            const headers = {
+                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+            };
+            const config = {
+                headers: headers
+            };
+            const response = await axios.post(`${url}/carts/add`, {
+                "userId": userId,
+                "variantId": variantId,
+                "quantity": quantity
+            }, config);
+            return response.data;
         }
     }
 
