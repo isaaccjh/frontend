@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 import LureContext from "../contexts/LureContext";
+import CartContext from "../contexts/CartContext";
 
 import jwtDecode from "jwt-decode";
 
@@ -12,23 +13,24 @@ export default function ProductPage() {
     const [quantity, setQuantity] = useState(0);
     const [displayedLure, setDisplayedLure] = useState(variants[0]);
 
-    const context = useContext(LureContext);
+    const cartContext = useContext(CartContext)
+    const lureContext = useContext(LureContext);
     useEffect(() => {
         const getLure = async () => {
-            const lure = await context.getLureById(lure_id);
+            const lure = await lureContext.getLureById(lure_id);
             setLure(lure);
         }
         getLure();
-    }, [context, lure_id]);
+    }, [lureContext, lure_id]);
 
     useEffect(() => {
         const getLureVariants = async () => {
-            const variants = await context.getAllVariantsByLureId(lure_id);
+            const variants = await lureContext.getAllVariantsByLureId(lure_id);
             setVariants(variants);
             setDisplayedLure(variants[0]);
         }
         getLureVariants();
-    }, [context, lure_id]);
+    }, [lureContext, lure_id]);
 
     const changeDisplay = (variantId) => {
         const newDisplay = variants.filter(variant => variant.id === variantId);
@@ -41,7 +43,7 @@ export default function ProductPage() {
         if (token) {
             userId = jwtDecode(token).id;
         };
-        const response = await context.addToCart(userId, displayedLure.id, quantity);
+        const response = await cartContext.addToCart(userId, displayedLure.id, quantity);
         console.log(response);
 
     } 

@@ -26,24 +26,26 @@ const App = () => {
     <React.Fragment>
       <Router>
         <UserProvider>
-          <Navbar />
-          <Routes>
-            <Route path="/products" element={
-              <LureProvider>
-                <ProductListing />
-              </LureProvider>}
-            />
-            <Route path="/products/:lure_id" element={
-              <LureProvider>
-                <ProductPage />
-              </LureProvider>}
-            />
-            <Route path="/login" element={<Login />}/>
-            <Route path="/profile" element={<Profile />}/>
-            <Route path="/logout" element={<Logout />}/>
-            
-            <Route path="/cart" element={<CartProvider><Cart /></CartProvider>} />
-          </Routes>
+          <CartProvider>
+            <Navbar />
+            <Routes>
+              <Route path="/products" element={
+                <LureProvider>
+                  <ProductListing />
+                </LureProvider>}
+              />
+              <Route path="/products/:lure_id" element={
+                <LureProvider>
+                  <ProductPage />
+                </LureProvider>}
+              />
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/logout" element={<Logout />} />
+
+              <Route path="/cart" element={<Cart />} />
+            </Routes>
+          </CartProvider>
         </UserProvider>
       </Router>
     </React.Fragment>
