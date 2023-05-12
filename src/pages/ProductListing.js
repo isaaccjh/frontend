@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 import LureContext from "../contexts/LureContext";
 import "../index.css";
 
+import SearchBar from "../components/SearchBar";
+
 import ProductCard from "../components/ProductCard";
 
 export default function ProductListing() {
@@ -28,19 +30,23 @@ export default function ProductListing() {
 
     return (
         <React.Fragment>
-            <div>
-                <ul className="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-                    {lures.map(p => (
-                        <li>
-                            <ProductCard
-                                product={p}
-                                variants={variants.filter(v => v.lure_id === p.id)}
-                                lures={lures}
-                            />
-                        </li>
-                    ))}
-                </ul>
+            <div className="px-5">
+                <SearchBar />
+                <div>
+                    <ul className="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+                        {lures.map(p => (
+                            <li>
+                                <ProductCard
+                                    product={p}
+                                    variants={variants.filter(v => v.lure_id === p.id)}
+                                    lures={lures}
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         </React.Fragment>
+
     )
 }
