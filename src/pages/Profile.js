@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { Link } from "react-router-dom"
 import "../index.css"
 
 import UserContext from "../contexts/UserContext";
@@ -39,29 +40,30 @@ export default function Profile() {
         <div>Profile</div>
 
         {userOrders && userOrders.length !== 0 ?
-            <div className="relative">
-                <table className="table-auto">
-                    <thead>
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table className="w-full text-sm text-left text-gray-700">
+                    <thead className="text-xs text-gray-900 uppercase bg-gray-50">
                         <tr>
-                            <th className="p-3">Order ID</th>
-                            <th>Shipping Address</th>
-                            <th>Total Cost</th>
-                            <th>Payment Type</th>
-                            <th>Order Status</th>
-                            <th>Order Date</th>
-                            <th></th>
+                            <th scope="col" class="px-4 py-2">Order ID</th>
+                            <th scope="col" class="px-4 py-2">Shipping Address</th>
+                            <th scope="col" class="px-4 py-2">Total Cost</th>
+                            <th scope="col" class="px-4 py-2">Payment Type</th>
+                            <th scope="col" class="px-4 py-2">Order Status</th>
+                            <th scope="col" class="px-4 py-2">Order Date</th>
+                            <th scope="col" class="px-4 py-2"></th>
                         </tr>
                     </thead>
                     <tbody>
                         {userOrders.map(order => {
                             return (
-                                <tr key={order.id}>
-                                    <td className="p-3">{order.id}</td>
-                                    <td>{order.shipping_address_line_1}{order.shipping_address_line_2}</td>
-                                    <td>{order.total_cost / 100}</td>
-                                    <td>{order.payment_type}</td>
-                                    <td>{order.order_status.order_status}</td>
-                                    <td>{order.order_date}</td>
+                                <tr key={order.id} scope="row" className="bg-white border-b">
+                                    <td className="px-4 py-2">{order.id}</td>
+                                    <td className="px-4 py-2">{order.shipping_address_line_1}{order.shipping_address_line_2}</td>
+                                    <td className="px-4 py-2">{order.total_cost / 100}</td>
+                                    <td className="px-4 py-2">{order.payment_type}</td>
+                                    <td className="px-4 py-2">{order.order_status.order_status}</td>
+                                    <td className="px-4 py-2">{order.order_date}</td>
+                                    <td className="px-4 py-2"><Link className="font-medium">Update</Link></td>
                                 </tr>
                             )
                         })}
