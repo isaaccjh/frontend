@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 import UserContext from "../contexts/UserContext";
 import { checkPassword } from "../validator/password";
 
@@ -34,7 +37,7 @@ export default function Login() {
 
                 navigate("/products")
             } else {
-                return;
+                toast.error(response);
             }
         };
 
@@ -62,6 +65,7 @@ export default function Login() {
                 onChange={updateFormField}
             />
         </div>
+        <ToastContainer />
         <button type="submit" onClick={submitForm} className=" bg-blue-600">Login</button>
     </>)
 }
