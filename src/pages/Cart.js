@@ -83,6 +83,11 @@ export default function Cart() {
         setCartItems(newCart);
     }
 
+    let url;
+    if (userId) {
+        url = `https://tgc-project3-express.onrender.com/api/checkout/${userId}`
+    }
+
     return (<>
         <h1 className="text-3xl font-bold mt-5 flex justify-center">Your Cart</h1>
         <ul className="flex flex-col items-center mt-4">
@@ -115,7 +120,7 @@ export default function Cart() {
             }) : <p className="text-2xl">Cart is empty!</p>}
         </ul>
         <hr className="my-4" />
-        <form action="" method="post">
+        <form action={url} method="post">
             <div className="flex justify-center">
                 <button type="submit" className="flex p-4 border-2 rounded-md mt-3 justify-center hover:bg-slate-500 bg-slate-100 w-1/3" to="/checkout">Checkout</button>
             </div>
