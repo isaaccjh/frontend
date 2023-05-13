@@ -56,6 +56,14 @@ export default function CartProvider(props) {
                 "quantity": quantity
             }, config);
             return response.data;
+        },
+        checkoutCart: async (userId) => {
+            const response = await axios.get(`${url}/checkout`, {
+                params: {
+                    user_id: userId
+                }
+            });
+            return response.data;
         }
     }
 
