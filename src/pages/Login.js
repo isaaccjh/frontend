@@ -21,26 +21,32 @@ export default function Login() {
     }
 
     const submitForm = async () => {
+        // validate the form
         if (formState.password && formState.email) {
             const response = await context.loginUser({
                 "password": formState.password,
                 "email": formState.email
             });
-            localStorage.setItem("accessToken", response.accessToken);
-            localStorage.setItem("refreshToken", response.refreshToken);
-            
-            navigate("/products")
+
+            if (response !== "Invalid login.") {
+                localStorage.setItem("accessToken", response.accessToken);
+                localStorage.setItem("refreshToken", response.refreshToken);
+
+                navigate("/products")
+            } else {
+                return;
+            }
         };
-       
+
     }
 
     return (<>
         <h1>Login</h1>
         <div>
             <label>Email:</label>
-            <input 
-                type="email" 
-                className="ml-2" 
+            <input
+                type="email"
+                className="ml-2"
                 name="email"
                 value={formState.email}
                 onChange={updateFormField}
@@ -48,9 +54,9 @@ export default function Login() {
         </div>
         <div>
             <label>Password:</label>
-            <input 
-                type="password" 
-                className="ml-2" 
+            <input
+                type="password"
+                className="ml-2"
                 name="password"
                 value={formState.password}
                 onChange={updateFormField}

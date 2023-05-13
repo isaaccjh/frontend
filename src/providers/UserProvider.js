@@ -15,7 +15,12 @@ export default function UserProvider(props) {
                 const response = await axios.post(`${url}/users/login`, data);
                 // console.log("refreshToken:", response.data.refreshToken);
                 // console.log("accessToken:", response.data.accessToken);
-                return response.data
+                console.log(response);
+                if (response.data.error === "Invalid login.") {
+                    return response.data.error;
+                } else {
+                    return response.data;
+                }
 
             } catch (e) {
                 console.log(e);
