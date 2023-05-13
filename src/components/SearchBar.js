@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 export default function SearchBar(props) {
-    const [toggleState, setToggleState] = useState(false);
+    const [filter, setFilter] = useState(false);
 
     return (<>
         <div className="flex mt-2">
