@@ -92,19 +92,19 @@ export default function ProductPage() {
                             <div className="border-2 p-4 rounded-md">
                                 Specifications:
                                 <div className="text-sm">
-                                    Depth: {lure.depth === "0" ? "All depths" : `${lure.depth}m`}
+                                    Depth: {lure?.depth === "0" ? "All depths" : `${lure?.depth}m`}
                                 </div>
                                 <div className="text-sm">
-                                    Hook: {lure.hook}
+                                    Hook: {lure?.hook}
                                 </div>
                                 <div className="text-sm">
-                                    Type: {lure.type}
+                                    Type: {lure?.type}
                                 </div>
                                 <div className="text-sm">
-                                    Size: {lure.size}mm
+                                    Size: {lure?.size}mm
                                 </div>
                                 <div className="text-sm">
-                                    Weight: {lure.weight}g
+                                    Weight: {lure?.weight}g
                                 </div>
                             </div>
                         </div>
