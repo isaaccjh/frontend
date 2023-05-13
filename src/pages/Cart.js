@@ -16,19 +16,16 @@ export default function Cart() {
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
         if (token) {
-            setUserId((jwtDecode(token)).id)
+            setUserId((jwtDecode(token)).id);
+            const getCart = async () => {
+                const cartItems = await context.getCart(userId);
+                setCartItems(cartItems);
+                console.log(cartItems)
+            }
+            getCart();
         }
 
-    }, [setUserId, userId])
-
-    useEffect(() => {
-        const getCart = async () => {
-            const cartItems = await context.getCart(userId);
-            setCartItems(cartItems);
-            console.log(cartItems)
-        }
-        getCart();
-    }, [context, userId])
+    }, [setUserId, userId, context])
 
     const updateQuantity = async (e, itemId) => {
         const itemToUpdate = cartItems.filter(item => item.id === itemId);
@@ -120,10 +117,10 @@ export default function Cart() {
             }) : <p className="text-2xl">Cart is empty!</p>}
         </ul>
         <hr className="my-4" />
-        <form action={url} method="post">
+        <a href={url}>
             <div className="flex justify-center">
                 <button type="submit" className="flex p-4 border-2 rounded-md mt-3 justify-center hover:bg-slate-500 bg-slate-100 w-1/3" to="/checkout">Checkout</button>
             </div>
-        </form>
+        </a>
     </>)
 }
