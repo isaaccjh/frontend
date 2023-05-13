@@ -52,6 +52,7 @@ export default function ProductPage() {
     }
 
 
+
     return (<React.Fragment>
         {displayedLure && lure && variants.length > 0 ?
             <section>

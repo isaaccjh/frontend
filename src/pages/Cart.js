@@ -30,9 +30,6 @@ export default function Cart() {
         getCart();
     }, [context, userId])
 
-    // const updateQuantity = useCallback(async (e, variantId) => {
-    //     console.log(e.target);
-    // }, []) 
     const updateQuantity = async (e, itemId) => {
         const itemToUpdate = cartItems.filter(item => item.id === itemId);
         const updatedCart = cartItems.map(item => {
