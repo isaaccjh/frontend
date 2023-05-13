@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from "react";
-import jwtDecode from "jwt-decode";
 
 import UserContext from "../contexts/UserContext";
 
@@ -19,17 +18,24 @@ export default function Profile() {
     }, [context]);
 
     useEffect(() => {
-        const getOrders = async () => {
-            const token = localStorage.getItem("accessToken");
-            if (token && token !== undefined) {
-                const orders = 
+        const getOrdersByUserId = async () => {
+            if (Object.keys(userDetails).length !== 0) {
+                const orders = await context.getOrdersByUserId(userDetails.id);
+                setUserOrders(orders);
+                return orders;
             }
         }
-    }, [])
+        getOrdersByUserId();
+    }, [context, userDetails]);
 
+    useEffect(() => {
+        console.log("userOrders:", userOrders);
+    }, [userOrders])
+
+    
 
     return (<>
         <div>Profile</div>
-        
+
     </>)
 }
