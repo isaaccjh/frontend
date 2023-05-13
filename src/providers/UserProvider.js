@@ -44,6 +44,10 @@ export default function UserProvider(props) {
         },
         checkIfLoggedIn: () => {
             return localStorage.getItem("accessToken") ? true : false; 
+        },
+        getOrdersByUserId: async (userId) => {
+            const response = await axios.get(`${url}/orders/${userId}`);
+            return response.data;
         }
     }
 
