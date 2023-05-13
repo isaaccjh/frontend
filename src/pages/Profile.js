@@ -4,6 +4,8 @@ import "../index.css"
 
 import UserContext from "../contexts/UserContext";
 
+const moment = require("moment");
+moment().format();
 
 export default function Profile() {
     const context = useContext(UserContext);
@@ -41,8 +43,8 @@ export default function Profile() {
 
         {userOrders && userOrders.length !== 0 ?
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="w-full text-sm text-left text-gray-700">
-                    <thead className="text-xs text-gray-900 uppercase bg-gray-50">
+                <table className="w-full text-xs text-left text-gray-700">
+                    <thead className="text-[10px] text-gray-900 uppercase bg-gray-50">
                         <tr>
                             <th scope="col" class="px-4 py-2">Order ID</th>
                             <th scope="col" class="px-4 py-2">Shipping Address</th>
@@ -60,10 +62,10 @@ export default function Profile() {
                                     <td className="px-4 py-2">{order.id}</td>
                                     <td className="px-4 py-2">{order.shipping_address_line_1}{order.shipping_address_line_2}</td>
                                     <td className="px-4 py-2">{order.total_cost / 100}</td>
-                                    <td className="px-4 py-2">{order.payment_type}</td>
+                                    <td className="px-4 py-2">{order.payment_type[0].toUpperCase()}{order.payment_type.slice(1)}</td>
                                     <td className="px-4 py-2">{order.order_status.order_status}</td>
-                                    <td className="px-4 py-2">{order.order_date}</td>
-                                    <td className="px-4 py-2"><Link className="font-medium">Update</Link></td>
+                                    <td className="px-4 py-2">{moment(order.order_date).format("YYYY-MM-DD")}</td>
+                                    <td className="px-4 py-2"><Link className="">Update</Link></td>
                                 </tr>
                             )
                         })}
