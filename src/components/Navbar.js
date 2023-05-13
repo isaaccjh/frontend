@@ -18,7 +18,7 @@ export default function Navbar() {
        
     }, [])
     return (<>
-        <nav className="shadow sticky top-0">
+        <nav className="shadow sticky top-0 bg-white">
             <div className="flex justify-between">
                 <ul className="flex items-center gap-8 p-5">
                     <li><Link to="/">Home</Link></li>

@@ -35,7 +35,7 @@ export default function Login() {
                 localStorage.setItem("accessToken", response.accessToken);
                 localStorage.setItem("refreshToken", response.refreshToken);
 
-                navigate("/products")
+                navigate("/products");
             } else {
                 toast.error(response);
             }
