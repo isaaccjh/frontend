@@ -1,28 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useAnimate, } from "framer-motion";
 
+import FilterBox from "./FIlterBox";
 
-
+import { MdKeyboardArrowDown, } from "react-icons/md";
 
 export default function SearchBar(props) {
     const [filter, setFilter] = useState(false);
+    const [scope, animate] = useAnimate();
+    const [filterState, setFilterState] = useState({});
 
     const toggleFilter = () => {
         setFilter(!filter);
     };
 
+    useEffect(() => {
+        animate(scope.current, { rotate: filter ? 0  : 180 })
+    }, [filter])
 
 
     return (<>
         <div className="flex mt-2">
-            <div className="flex border-2 ml-0 mx-3 px-4 items-center">
-                <button className="text-xs" onClick={toggleFilter}>Filter & Sort</button>
-            </div>
+            <button onClick={toggleFilter} className="flex ml-0 mx-3 px-4 items-center">
+                <div className="mr-2">Filter</div>
+                <div ref={scope}>
+                    <MdKeyboardArrowDown />
+                </div>
+            </button>
             <div className="flex w-3/4">
                 <input className="w-3/4" type="text" />
             </div>
         </div>
         <div>
-            {filter ? "filter" : null}
+            {filter ? <FilterBox filter={filter} /> : null}
         </div>
     </>)
+
 }

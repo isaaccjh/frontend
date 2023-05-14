@@ -31,7 +31,7 @@ export default function ProductListing() {
     return (
         <React.Fragment>
             <div className="px-5">
-                <SearchBar />
+                {/* <SearchBar /> */}
                 <div>
                     <ul className="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
                         {lures.map(p => (
