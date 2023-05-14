@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
+import { easeInOut, useAnimate } from "framer-motion";
 import jwtDecode from "jwt-decode";
 
 import { BsSearch, BsBag } from "react-icons/bs";
 import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
+
+import SearchBar from "./SearchBar";
 
 import UserContext from "../contexts/UserContext";
 
@@ -11,6 +14,8 @@ export default function Navbar() {
     const [user, setUser] = useState(null);
     const [hamburger, setHamburger] = useState(false);
     const [userSettings, setUserSettings] = useState(false);
+    const [searchStatus, setSearchStatus] = useState(false)
+    const [scope, animate] = useAnimate();
 
     const context = useContext(UserContext);
 
@@ -24,17 +29,25 @@ export default function Navbar() {
 
     }, []);
 
+
     const toggleHamburger = () => {
         setHamburger(!hamburger);
     };
 
     const toggleUserSettings = () => {
-        setUserSettings(!userSettings)
-    }
+        setUserSettings(!userSettings);
+    };
+
+    const toggleSearchStatus = () => {
+        setSearchStatus(!searchStatus);
+        animate(scope.current, !searchStatus ? {y : 0} : {y : -50}, {
+            duration: 0.2
+        } )
+    };
 
 
     return (<>
-        <header className="border-b border-gray-100 bg-yellow-400">
+        <header className="border-b border-gray-100 bg-yellow-400 sticky top-0 z-50">
             <div
                 className="mx-auto shadow flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8"
             >
@@ -110,6 +123,7 @@ export default function Navbar() {
                             </div>
                             <span className="hidden sm:block">
                                 <button
+                                    onClick={toggleSearchStatus}
                                     className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
                                     <BsSearch />
                                     <span className="sr-only"> Search </span>
@@ -120,5 +134,8 @@ export default function Navbar() {
                 </div>
             </div>
         </header>
+        <div ref={scope}className="pl-5">
+            {searchStatus ? <SearchBar /> : null}
+        </div>
     </>)
 }

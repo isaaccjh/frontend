@@ -8,7 +8,9 @@ import { MdKeyboardArrowDown, } from "react-icons/md";
 export default function SearchBar(props) {
     const [filter, setFilter] = useState(false);
     const [scope, animate] = useAnimate();
-    const [filterState, setFilterState] = useState({});
+    const [filterState, setFilterState] = useState({
+        "lure": "",
+    });
 
     const toggleFilter = () => {
         setFilter(!filter);
@@ -20,8 +22,8 @@ export default function SearchBar(props) {
 
 
     return (<>
-        <div className="flex mt-2">
-            <button onClick={toggleFilter} className="flex ml-0 mx-3 px-4 items-center">
+        <div className="flex mt-1">
+            <button onClick={toggleFilter} className="flex ml-0 mx-3  px-4 border-2  items-center">
                 <div className="mr-2">Filter</div>
                 <div ref={scope}>
                     <MdKeyboardArrowDown />

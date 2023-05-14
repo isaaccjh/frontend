@@ -52,8 +52,8 @@ export default function Login() {
     }
 
     return (<>
-        <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-lg">
+        <div className="mx-auto login rounded-lg max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-lg   p-6">
                 <h1 className="text-center text-2xl font-bold text-[#252525] sm:text-3xl">
                     Join Us today!
                 </h1>
@@ -64,7 +64,7 @@ export default function Login() {
 
                 <div
                     action=""
-                    className="mb-0 mt-6 space-y-5 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+                    className="mb-0 mt-6 space-y-5 rounded-lg p-4 shadow-xl sm:p-6 lg:p-8"
                 >
                     <p className="text-center text-[#252525] text-lg font-medium">Login to your account</p>
 
