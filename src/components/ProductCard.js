@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useAnimate } from "framer-motion";
 
 export default function ProductCard(props) {
 
@@ -14,7 +14,7 @@ export default function ProductCard(props) {
                         <p>No variants available</p>
                     )}
                 </div>
-                <div className="ml-1 mt-10 px-1 ">
+                <div  className="ml-1 mt-10 px-1">
                     <h3 className="group-hover:underline group-hover:underline-offset-2">{props.product.name}</h3>
                     <div className="text-gray-900 flex items-center justify-between">
                         <p className="text-s">${(Math.min.apply(Math, props.variants.map(v => v.cost)))/100} - ${(Math.max.apply(Math, props.variants.map(v => v.cost)))/100} </p>
