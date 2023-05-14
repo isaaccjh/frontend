@@ -47,7 +47,7 @@ export default function SearchBar(props) {
 
     return (<>
         <div className="flex mt-1">
-            <button onClick={toggleFilter} className="flex ml-0 mx-3  px-4 border-2  items-center">
+            <button onClick={toggleFilter} className="flex ml-0 mx-3 px-4 border-2  items-center">
                 <div className="mr-2">Filter</div>
                 <div ref={scope}>
                     <MdKeyboardArrowDown />

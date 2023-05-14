@@ -134,7 +134,7 @@ export default function Navbar() {
                 </div>
             </div>
         </header>
-        <div ref={scope}className="pl-5">
+        <div ref={scope}className="px-5">
             {searchStatus ? <SearchBar /> : null}
         </div>
     </>)
