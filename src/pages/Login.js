@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "../index.css";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -114,7 +114,7 @@ export default function Login() {
 
                     <p className="text-center text-sm text-gray-800">
                         No account?
-                        <a className="underline text-sm ml-2 hover:text-blue-500" href="">Sign up</a>
+                        <Link className="underline text-sm ml-2 hover:text-blue-700" to="/register">Sign up</Link>
                     </p>
                 </div>
             </div>
