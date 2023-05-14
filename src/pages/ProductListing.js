@@ -1,4 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useAnimate } from "framer-motion";
+import { useLocation } from "react-router-dom";
 import LureContext from "../contexts/LureContext";
 import "../index.css";
 
@@ -9,16 +11,26 @@ import ProductCard from "../components/ProductCard";
 export default function ProductListing() {
     let context = useContext(LureContext);
     const [lures, setLures] = useState([]);
-    const [variants, setVariants] = useState([])
-
+    const [variants, setVariants] = useState([]);
+    const [scope, animate] = useAnimate();
+    const [display, setDisplay] = useState([]);
+    
+    const location = useLocation();
 
     useEffect(() => {
-        async function getProducts() {
+        const getProducts = async () => {
             const allLures = await context.getAllLures();
+            let filteredLures = allLures;
+            const lureFilter = location?.state?.filterState?.lure
+            if (lureFilter !== 0 && lureFilter !== undefined) {
+                const regex = new RegExp(location.state.filterState.lure, "i");
+                filteredLures = allLures.filter(lure => regex.test(lure.name));
+            }
             setLures(allLures);
+            setDisplay(filteredLures);
         }
         getProducts();
-    }, [context]);
+    }, [context, location])
 
     useEffect(() => {
         async function getVariants() {
@@ -26,7 +38,7 @@ export default function ProductListing() {
             setVariants(allVariants);
         }
         getVariants();
-    }, [context])
+    }, [context]);
 
     return (
         <React.Fragment>
@@ -34,12 +46,12 @@ export default function ProductListing() {
                 {/* <SearchBar /> */}
                 <div>
                     <ul className="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-                        {lures.map(p => (
+                        {display.map(p => (
                             <li>
                                 <ProductCard
                                     product={p}
                                     variants={variants.filter(v => v.lure_id === p.id)}
-                                    lures={lures}
+                                    lures={display}
                                 />
                             </li>
                         ))}
