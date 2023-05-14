@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import jwtDecode from "jwt-decode";
 
 import { BsSearch, BsBag } from "react-icons/bs";
-import { RxAvatar } from "react-icons/rx"; 
+import { RxAvatar, RxHamburgerMenu } from "react-icons/rx"; 
 
 import UserContext from "../contexts/UserContext";
 
@@ -25,22 +25,9 @@ export default function Navbar() {
             <div
                 className="mx-auto flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8"
             >
-                <div className="flex items-center gap-4">
-                    <button type="button" className="p-2 lg:hidden">
-                        <svg
-                            className="h-6 w-6"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        </svg>
+                <div className="flex items-center gap-4 p-2">
+                    <button type="button" className="p-2 border-2 rounded lg:hidden">
+                        <RxHamburgerMenu className="h-6 w-6" />
                     </button>
 
                     <a href="#" className="flex">
@@ -56,28 +43,28 @@ export default function Navbar() {
                     >
                         <a
                             href="/about"
-                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
+                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-yellow-400"
                         >
                             About
                         </a>
 
                         <a
                             href="/news"
-                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
+                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-yellow-400"
                         >
                             News
                         </a>
 
                         <a
                             href="/products"
-                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
+                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-yellow-400"
                         >
                             Products
                         </a>
 
                         <a
                             href="/contact"
-                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-red-700"
+                            className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-yellow-400"
                         >
                             Contact
                         </a>
@@ -88,7 +75,7 @@ export default function Navbar() {
                             <span className="border-e border-e-gray-100">
                                 <a
                                     href="/cart"
-                                    className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700"
+                                    className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400"
                                 >
                                     <BsBag />
 
@@ -99,7 +86,7 @@ export default function Navbar() {
                             <span className="border-e border-e-gray-100">
                                 <a
                                     href="/account"
-                                    className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-red-700"
+                                    className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400"
                                 >
                                     <RxAvatar className="scale-[1.2]"/>
 
