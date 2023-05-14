@@ -1,12 +1,16 @@
 import { useState } from "react";
 
+import Drawer from "./Drawer";
+
 
 export default function SearchBar(props) {
     const [filter, setFilter] = useState(false);
 
     const toggleFilter = () => {
         setFilter(!filter);
-    }
+    };
+
+
 
     return (<>
         <div className="flex mt-2">
@@ -18,7 +22,7 @@ export default function SearchBar(props) {
             </div>
         </div>
         <div>
-            {filter ? <p>Filter has been toggled</p> : null}
+            {filter ? <Drawer /> : null}
         </div>
     </>)
 }
