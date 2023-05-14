@@ -80,7 +80,7 @@ export default function Login() {
                                 placeholder="Enter email"
                             />
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                            <span className="absolute inset-y-0 border-gray-200 end-0 grid place-content-center px-4">
                                 <MdOutlineAlternateEmail />
                             </span>
                         </div>
