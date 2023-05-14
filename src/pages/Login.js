@@ -64,7 +64,7 @@ export default function Login() {
 
                 <div
                     action=""
-                    className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+                    className="mb-0 mt-6 space-y-5 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
                 >
                     <p className="text-center text-[#252525] text-lg font-medium">Login to your account</p>
 
@@ -76,7 +76,7 @@ export default function Login() {
                                 value={formState.email}
                                 name="email"
                                 type="email"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                className="w-full rounded-lg border-gray-200 p-3 pe-11 text-sm shadow-sm"
                                 placeholder="Enter email"
                             />
 
@@ -87,7 +87,7 @@ export default function Login() {
                     </div>
 
                     <div>
-                        <label htmlFor="password" className="sr-only">Password</label>
+                        <label className="sr-only">Password</label>
 
                         <div className="relative">
                             <input
@@ -95,7 +95,7 @@ export default function Login() {
                                 value={formState.password}
                                 name="password"
                                 type={passwordVisibility ? "text" : "password"}
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                className="w-full rounded-lg border-gray-200 p-3 pe-11 text-sm shadow-sm"
                                 placeholder="Enter password"
                             />
 
