@@ -4,7 +4,6 @@ import jwtDecode from "jwt-decode";
 
 import { BsSearch, BsBag } from "react-icons/bs";
 import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
-import { OffcanvasProvider, Trigger, Offcanvas } from "react-simple-offcanvas";
 
 import UserContext from "../contexts/UserContext";
 
@@ -12,6 +11,8 @@ export default function Navbar() {
     const [user, setUser] = useState(null);
     const [hamburger, setHamburger] = useState(false);
     const [userSettings, setUserSettings] = useState(false);
+
+    const context = useContext(UserContext);
 
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
@@ -79,10 +80,7 @@ export default function Navbar() {
                     <div className="flex items-center">
                         <div className="flex items-center border-x border-gray-100">
                             <span className="border-e border-e-gray-100">
-                                <Link
-                                    href="/cart"
-                                    className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400"
-                                >
+                                <Link to="/cart" className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
                                     <BsBag />
 
                                     <span className="sr-only">Cart</span>
@@ -106,7 +104,7 @@ export default function Navbar() {
                                     </div>
                                     <hr />
                                     <div className="hover:underline">
-                                        <Link>Sign up</Link>
+                                        {context.checkIfLoggedIn() ? <Link onClick={toggleUserSettings} to="/logout">Log out</Link> : <Link onClick={toggleUserSettings} to="/login">Login</Link>}
                                     </div>
                                 </div>
                             </div>
