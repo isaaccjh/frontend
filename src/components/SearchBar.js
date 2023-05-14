@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Drawer from "./Drawer";
+
 
 
 export default function SearchBar(props) {
@@ -22,7 +22,7 @@ export default function SearchBar(props) {
             </div>
         </div>
         <div>
-            {filter ? <Drawer /> : null}
+            {filter ? "filter" : null}
         </div>
     </>)
 }
