@@ -23,14 +23,13 @@ export default function Navbar() {
 
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
-        if (token) {
+        if (token && token !== undefined) {
             setUser(jwtDecode(token));
         } else {
             setUser(null);
         }
 
     }, []);
-
 
     const toggleHamburger = () => {
         setHamburger(!hamburger);
