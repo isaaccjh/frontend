@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { easeInOut, useAnimate } from "framer-motion";
 import jwtDecode from "jwt-decode";
+
 
 import { BsSearch, BsBag } from "react-icons/bs";
 import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
@@ -18,6 +19,7 @@ export default function Navbar() {
     const [scope, animate] = useAnimate();
 
     const context = useContext(UserContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
@@ -39,10 +41,15 @@ export default function Navbar() {
     };
 
     const toggleSearchStatus = () => {
-        setSearchStatus(!searchStatus);
-        animate(scope.current, !searchStatus ? {y : 0} : {y : -50}, {
-            duration: 0.2
-        } )
+        const token = localStorage.getItem("accessToken");
+        if (token) {
+            setSearchStatus(!searchStatus);
+            animate(scope.current, !searchStatus ? { y: 0 } : { y: -50 }, {
+                duration: 0.2
+            })
+        } else {
+            navigate("/login")
+        }
     };
 
 
@@ -134,7 +141,7 @@ export default function Navbar() {
                 </div>
             </div>
         </header>
-        <div ref={scope}className="px-5">
+        <div ref={scope} className="px-5">
             {searchStatus ? <SearchBar /> : null}
         </div>
     </>)
