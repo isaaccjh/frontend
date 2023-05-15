@@ -10,6 +10,7 @@ import { RxAvatar, RxHamburgerMenu } from "react-icons/rx";
 import SearchBar from "./SearchBar";
 
 import UserContext from "../contexts/UserContext";
+import Logo from "../logo.png"
 
 export default function Navbar() {
     const [user, setUser] = useState(null);
@@ -63,8 +64,7 @@ export default function Navbar() {
                     </button>
 
                     <Link to="/home" className="flex">
-                        <span className="sr-only">Logo</span>
-                        <span className="inline-block h-10 w-32 rounded-lg bg-gray-200"></span>
+                        <span className="logo inline-block h-10 w-32 rounded-lg top-0 bg-gray-200"><img src={Logo} /></span>
                     </Link>
                 </div>
 

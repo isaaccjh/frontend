@@ -17,10 +17,17 @@
   font-family: "Nunito", sans-serif;
   font-size:  1.05rem;
   background-color: white;
-
 }
 #root {
   height: 100vh
+}
+
+.login {
+  background-image: url("https://images.pexels.com/photos/4794911/pexels-photo-4794911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-color: none !important; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
 }
 
 
