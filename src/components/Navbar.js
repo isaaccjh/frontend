@@ -41,7 +41,7 @@ export default function Navbar() {
 
     const toggleSearchStatus = () => {
         const token = localStorage.getItem("accessToken");
-        if (token) {
+        if (token && token !== undefined) {
             setSearchStatus(!searchStatus);
             animate(scope.current, !searchStatus ? { y: 0 } : { y: -50 }, {
                 duration: 0.2
@@ -53,7 +53,7 @@ export default function Navbar() {
 
 
     return (<>
-        <header className="border-b border-gray-100 bg-yellow-400 sticky top-0 z-50">
+        <header className="border-b border-gray-100 sticky top-0 z-50">
             <div
                 className="mx-auto shadow flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8"
             >
