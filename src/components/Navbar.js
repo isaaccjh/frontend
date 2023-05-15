@@ -64,7 +64,7 @@ export default function Navbar() {
                     </button>
 
                     <Link to="/home" className="flex items-center">
-                        <span className="inline-block h-14 w-32 rounded-lg top-0"><img className="bg-transparent h-[70px]" src={Logo} /></span>
+                        <span className="inline-block h-14 w-32 rounded-lg top-0"><img className="bg-transparent h-[70px] scale-[1.2]" src={Logo} /></span>
                     </Link>
                 </div>
 
