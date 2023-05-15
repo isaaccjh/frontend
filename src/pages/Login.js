@@ -47,7 +47,9 @@ export default function Login() {
             } else {
                 toast.error(response);
             }
-        };
+        } else {
+            toast.error("Please fill in all fields!")
+        }
 
     }
 
