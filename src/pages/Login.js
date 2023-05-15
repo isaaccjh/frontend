@@ -50,9 +50,11 @@ export default function Login() {
         };
 
     }
- 
+
     return (<>
-        <div className="mx-auto login rounded-lg max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <ToastContainer className="bg-transparent"
+                        autoClose={2500} />
+        <div className="mx-auto login max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-lg bg-transparent p-6">
                 <h1 className="text-center bg-transparent text-2xl font-bold text-white sm:text-3xl">
                     Join Us today!

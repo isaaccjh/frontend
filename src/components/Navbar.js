@@ -58,13 +58,13 @@ export default function Navbar() {
             <div
                 className="mx-auto shadow flex h-16 max-w-screen-2xl items-center justify-between sm:px-6 lg:px-8"
             >
-                <div className="flex items-center gap-4 p-2">
+                <div className="flex items-center gap-4 p-2 pt-0">
                     <button onClick={toggleHamburger} type="button" className="p-2 border-2 rounded-lg lg:hidden" >
                         <RxHamburgerMenu className="h-6 w-6" />
                     </button>
 
-                    <Link to="/home" className="flex">
-                        <span className="logo inline-block h-10 w-32 rounded-lg top-0 bg-gray-200"><img src={Logo} /></span>
+                    <Link to="/home" className="flex items-center">
+                        <span className="inline-block h-14 w-32 rounded-lg top-0"><img className="bg-transparent h-[70px]" src={Logo} /></span>
                     </Link>
                 </div>
 
@@ -98,7 +98,7 @@ export default function Navbar() {
 
                     <div className="flex items-center">
                         <div className="flex items-center border-x border-gray-100">
-                            <span className="border-e border-e-gray-100">
+                            <span className="">
                                 <Link to="/cart" className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
                                     <BsBag />
 
@@ -106,7 +106,7 @@ export default function Navbar() {
                                 </Link>
                             </span>
                             <div className="flex-col relative h-[67px]">
-                                <span className="border-e border-e-gray-100">
+                                <span className="">
                                     <button onClick={toggleUserSettings} href="/account" className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
                                         <RxAvatar className="scale-[1.2]" />
                                         <span className="sr-only"> Account </span>
