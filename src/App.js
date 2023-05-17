@@ -11,6 +11,7 @@ import CartProvider from "./providers/CartProvider";
 
 // COMPONENTS
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 
 //PAGES
@@ -48,6 +49,7 @@ const App = () => {
 
               <Route path="/cart" element={<Cart />} />
             </Routes>
+            <Footer />
           </CartProvider>
         </UserProvider>
       </Router>
