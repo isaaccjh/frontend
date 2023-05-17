@@ -99,7 +99,7 @@ export default function Navbar() {
                     <div className="flex items-center">
                         <div className="flex items-center">
                             <span className="">
-                                <Link to="/cart" className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
+                                <Link to={context.checkIfLoggedIn() ? "/cart" : "/login"} className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
                                     <BsBag />
 
                                     <span className="sr-only">Cart</span>

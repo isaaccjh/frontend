@@ -114,7 +114,7 @@ export default function ProductPage() {
                                 <button onClick={toggleReadMore} className="mt-2 text-sm font-medium underline">{readMore ? "Read less" : "Read more"}</button>
                             </div>
 
-                            <div className="flex mt-14">
+                            <div className="flex flex-wrap mt-14">
                                 {variants.map(variant => {
                                     if (variant?.colour?.name === displayedLure?.colour?.name) {
                                         return (
