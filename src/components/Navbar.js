@@ -70,7 +70,7 @@ export default function Navbar() {
 
                 <div className="flex flex-1 items-center justify-end gap-8">
                     <nav className="hidden lg:flex lg:gap-4 lg:text-xs lg:font-bold lg:uppercase lg:tracking-wide lg:text-[#252525]">
-                        <Link href="/home" className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-yellow-400">
+                        <Link to="/" className="block h-16 border-b-4 border-transparent leading-[4rem] hover:border-current hover:text-yellow-400">
                             Home
                         </Link>
 

@@ -11,14 +11,14 @@ export default function SearchBar(props) {
     const [filterState, setFilterState] = useState({
         "lure": "",
     });
-    
+
     const navigate = useNavigate();
 
     const toggleFilter = () => {
         setFilter(!filter);
     };
 
-    const updateFilterState =  (e) => {
+    const updateFilterState = (e) => {
         setFilterState({
             ...filterState,
             [e.target.name]: e.target.value
@@ -26,7 +26,7 @@ export default function SearchBar(props) {
     }
 
     useEffect(() => {
-        animate(scope.current, { rotate: filter ? 0  : 180 })
+        animate(scope.current, { rotate: filter ? 0 : 180 })
     }, [filter])
 
     const applyFilter = () => {
@@ -53,12 +53,12 @@ export default function SearchBar(props) {
                     <MdKeyboardArrowDown />
                 </div>
             </button>
-            <div className="flex w-3/4">
+            <div className="flex w-11/12">
                 <input className="w-3/4" type="text" name="lure" value={filterState.lure} onChange={updateFilterState} />
                 <button className="ml-2" onClick={applyFilter}>Apply Filter</button>
                 <button className="ml-2" onClick={clearFilter}>Clear</button>
             </div>
-               
+
         </div>
         <div>
             {filter ? <FilterBox filter={filter} /> : null}
