@@ -1,5 +1,6 @@
 import "../index.css"
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { RiDeleteBinLine, RiDeleteBinFill } from "react-icons/ri"
 
 import CartContext from "../contexts/CartContext"
@@ -12,11 +13,19 @@ export default function Cart() {
     const [cartItems, setCartItems] = useState([]);
 
     const context = useContext(CartContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("accessToken");
-        if (token) {
+        if (token && token !== undefined) {
             setUserId((jwtDecode(token)).id);
+        } else {
+            navigate("/login")
+        }
+    }, [setUserId, navigate])
+
+    useEffect(() => {
+        if (userId) {
             const getCart = async () => {
                 const cartItems = await context.getCart(userId);
                 setCartItems(cartItems);
@@ -25,7 +34,7 @@ export default function Cart() {
             getCart();
         }
 
-    }, [setUserId, userId, context])
+    }, [userId, context])
 
     const updateQuantity = async (e, itemId) => {
         const itemToUpdate = cartItems.filter(item => item.id === itemId);
@@ -40,6 +49,7 @@ export default function Cart() {
         })
         setCartItems(updatedCart)
         await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, e.target.value);
+        await context.getCart(userId)
     }
 
     const addQuantity = async (itemId) => {
@@ -55,6 +65,7 @@ export default function Cart() {
         })
         setCartItems(updatedCart);
         await context.updateQuantity(itemToUpdate[0].user_id, itemToUpdate[0].variant_id, (itemToUpdate[0].quantity + 1))
+        await context.getCart(userId)
     }
 
     const minusQuantity = async (itemId) => {
@@ -78,11 +89,12 @@ export default function Cart() {
 
         const newCart = await context.getCart(userId);
         setCartItems(newCart);
+        await context.getCart(userId)
     }
 
     let url;
     if (userId) {
-        url = `https://tgc-project3-express.onrender.com/api/checkout/${userId}`
+        url = `https://tgc-project3-express.onrender.com/api/checkout/${userId}/checkout`
     }
 
     return (<>
@@ -91,26 +103,26 @@ export default function Cart() {
             {cartItems && cartItems.length > 0 ? cartItems.map(item => {
                 return (
                     <li key={item.id} className="p-14 pl-10 m-2 border-2 rounded-md w-3/4 flex items-center h-[95px] gap-3 bg-slate-50">
-                        <img src={item.variant.thumbnail_url} alt="" />
+                        <img className="bg-slate-50" src={item.variant.thumbnail_url} alt="" />
                         <div className="flex flex-col">
-                            <div >
+                            <div className="bg-slate-50">
                                 {item.variant.lure.name}
                             </div>
-                            <div className=" text-gray-500">
-                                <div className="text-xs">
+                            <div className="bg-slate-50 text-gray-500">
+                                <div className="text-xs bg-slate-50">
                                     Colour: {item.variant.colour.name}
                                 </div>
-                                <div className="text-xs">
+                                <div className="text-xs bg-slate-50">
                                     Property: {item.variant.property.name}
                                 </div>
                             </div>
                         </div>
 
-                        <div className="flex flex-1 items-center justify-end gap-2">
+                        <div className="flex flex-1 items-center justify-end gap-2 bg-slate-50">
                             <button onClick={() => minusQuantity(item.id)}>&minus;</button>
                             <input onChange={(e) => updateQuantity(e, item.id)} name="quantity" type="number" value={item.quantity} className="h-8 text-center w-11" />
                             <button onClick={() => addQuantity(item.id)}>+</button>
-                            <button onClick={() => removeItem(item.id)} className="ml-2"><RiDeleteBinLine /></button>
+                            <button onClick={() => removeItem(item.id)} className="ml-2 bg-slate-50"><RiDeleteBinLine className="bg-slate-50" /></button>
                         </div>
                     </li>
                 )

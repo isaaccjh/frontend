@@ -61,9 +61,9 @@ export default function CartProvider(props) {
 
 
     return (
-    <CartContext.Provider value={cartContexts}>
-        {props.children}
-    </CartContext.Provider>
+        <CartContext.Provider value={cartContexts}>
+            {props.children}
+        </CartContext.Provider>
     )
 }
 

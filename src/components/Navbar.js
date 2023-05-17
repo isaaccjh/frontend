@@ -97,7 +97,7 @@ export default function Navbar() {
                     </nav>
 
                     <div className="flex items-center">
-                        <div className="flex items-center border-x border-gray-100">
+                        <div className="flex items-center">
                             <span className="">
                                 <Link to="/cart" className="grid h-16 w-16 place-content-center border-b-4 border-transparent hover:border-yellow-400">
                                     <BsBag />

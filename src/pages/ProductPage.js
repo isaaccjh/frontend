@@ -1,9 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import LureContext from "../contexts/LureContext";
 import CartContext from "../contexts/CartContext";
 
+
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import jwtDecode from "jwt-decode";
 
 export default function ProductPage() {
@@ -12,9 +15,13 @@ export default function ProductPage() {
     const [variants, setVariants] = useState([]);
     const [quantity, setQuantity] = useState(0);
     const [displayedLure, setDisplayedLure] = useState(variants[0]);
+    const [readMore, setReadMore] = useState(false);
 
     const cartContext = useContext(CartContext)
     const lureContext = useContext(LureContext);
+
+    const navigate = useNavigate();
+
     useEffect(() => {
         const getLure = async () => {
             const lure = await lureContext.getLureById(lure_id);
@@ -36,89 +43,122 @@ export default function ProductPage() {
         const newDisplay = variants.filter(variant => variant.id === variantId);
         setDisplayedLure(newDisplay[0]);
     }
-    
+
     const addToCart = async (itemId) => {
         let userId = null;
         const token = localStorage.getItem("accessToken");
         if (token) {
             userId = jwtDecode(token).id;
+        } else {
+            navigate("/login")
         };
         const response = await cartContext.addToCart(userId, displayedLure.id, quantity);
-        return response;
-    } 
+        if (response === true) {
+            toast.success("Successfully added to cart!")
+        } else {
+            toast.error("An error has occurred. Please try again.")
+        }
+    }
 
-    const updateQuantity = e => {
+    const updateQuantity = (e) => {
         setQuantity(e.target.value);
+    }
+
+    const toggleReadMore = () => {
+        setReadMore(!readMore)
     }
 
 
 
     return (<React.Fragment>
-        {displayedLure && lure && variants.length > 0 ?
+        <ToastContainer className="bg-transparent"
+            autoClose={2500} />
+        {displayedLure && lure && variants.length > 0 && Object.keys(lure).length > 0 ?
             <section>
-                <div className="flex flex-col items-center h-2/6">
-                    <div>
-                        <h1 className="text-3xl text-bold p-4">{displayedLure?.lure?.name}</h1>
-                    </div>
-                    <div className="shadow-md rounded-lg">
-                        <img className="w-full h-[200px]" src={displayedLure?.image_url} alt="" />
-                    </div>
-                </div>
-                <div className="flex justify-center mt-3">
-                    {variants.map(variant => {
-                        if (variant?.colour?.name === displayedLure?.colour?.name) {
-                            return (
-                                <button
-                                    key={variant.id}
-                                    className="text-xs p-2 m-2 border rounded-3xl bg-yellow-400 " >{variant.colour.name}</button>
-                            );
-                        };
-                        return (
-                            <button
-                                key={variant.id}
-                                onClick={() => changeDisplay(variant.id)}
-                                className="text-xs p-2 m-2 border rounded-3xl hover:bg-yellow-400 " >{variant.colour.name}</button>
-                        )
-                    })}
-                </div>
-                <div>
-                    <div className="flex">
-                        <div className="flex flex-col items-end px-20">
-                            <div className="border-2 p-4 rounded-md">
-                                Cost: ${displayedLure?.cost / 100}
-                                Property: {displayedLure?.property?.name}
-                                Series: {lure?.serie?.name} SERIES
-                            </div>
+                <div className="relative mx-auto max-w-screen-xl px-4 py-8">
+                    <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+                        <div className="grid grid-cols-2 gap-4 md:grid-cols-1">
+                            <img
+                                alt={displayedLure.colour.name}
+                                src={displayedLure.image_url}
+                                className="aspect-square object-contain w-full rounded-xl bg-slate-100"
+                            />
                         </div>
-                        <div className="flex flex-col items-start px-10 mr-10">
-                            <div className="border-2 p-4 rounded-md">
-                                Specifications:
-                                <div className="text-sm">
-                                    Depth: {lure?.depth === "0" ? "All depths" : `${lure?.depth}m`}
-                                </div>
-                                <div className="text-sm">
-                                    Hook: {lure?.hook}
-                                </div>
-                                <div className="text-sm">
-                                    Type: {lure?.type}
-                                </div>
-                                <div className="text-sm">
-                                    Size: {lure?.size}mm
-                                </div>
-                                <div className="text-sm">
-                                    Weight: {lure?.weight}g
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="px-10 mt-4">
-                        {lure.description}
-                    </div>
-                </div>
+                        <div className="sticky top-0">
+                            <strong
+                                className="rounded-full border border-blue-600 bg-gray-100 px-3 py-0.5 text-xs font-medium tracking-wide text-blue-600"
+                            >
+                                {displayedLure.lure.type}
+                            </strong>
 
-                <button onClick={() =>addToCart(displayedLure.id)} className="border-2 p-2 bg-slate-100">Add to cart</button>
-                <input onChange={updateQuantity} name="quantity" type="number" value={quantity} className="h-8 text-center w-11" />
+                            <div className="mt-8 flex justify-between">
+                                <div className="max-w-[35ch] space-y-2">
+                                    <h1 className="text-xl font-bold sm:text-2xl">
+                                        {lure.name}
+                                    </h1>
+
+                                    <p className="text-sm text-gray-800">VARIANT: {displayedLure.colour.name}</p>
+
+                                </div>
+
+                                <p className="text-lg font-bold">${displayedLure.cost / 100}</p>
+                            </div>
+
+                            <div className="mt-4">
+                                <div className="prose max-w-none">
+                                    <p>
+                                        {readMore ? lure.description : `${lure.description.slice(0, lure.description.length / 3)}...`}
+                                    </p>
+                                </div>
+
+                                <button onClick={toggleReadMore} className="mt-2 text-sm font-medium underline">{readMore ? "Read less" : "Read more"}</button>
+                            </div>
+
+                            <div className="flex mt-14">
+                                {variants.map(variant => {
+                                    if (variant?.colour?.name === displayedLure?.colour?.name) {
+                                        return (
+                                            <button
+                                                key={variant.id}
+                                                className="text-xs p-2 m-2 border rounded-3xl bg-yellow-400 " >{variant.colour.name}</button>
+                                        );
+                                    };
+                                    return (
+                                        <button
+                                            key={variant.id}
+                                            onClick={() => changeDisplay(variant.id)}
+                                            className="text-xs p-2 m-2 border rounded-3xl hover:bg-yellow-400 " >{variant.colour.name}</button>
+                                    )
+                                })}
+                            </div>
+
+                            <div className="mt-8 flex gap-4">
+                                <div>
+                                    <label for="quantity" className="sr-only">Qty</label>
+
+                                    <input
+                                        type="number"
+                                        id="quantity"
+                                        min="1"
+                                        value={quantity}
+                                        onChange={updateQuantity}
+                                        className="w-12 rounded border-gray-200 py-3 text-center text-xs [-moz-appearance:_textfield] [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
+                                    />
+                                </div>
+
+                                <button
+                                    className="block rounded bg-yellow-400 px-5 py-3 text-xs font-medium text-[#252525] hover:bg-yellow-500"
+                                    onClick={() => addToCart(displayedLure.id)}
+                                >
+                                    Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
-            : <p>Loading...</p>}
-    </React.Fragment>)
+
+            : <p>Loading...</p>
+        }
+    </React.Fragment >)
 }
