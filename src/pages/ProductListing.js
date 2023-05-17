@@ -14,7 +14,7 @@ export default function ProductListing() {
     const [variants, setVariants] = useState([]);
     const [scope, animate] = useAnimate();
     const [display, setDisplay] = useState([]);
-    
+
     const location = useLocation();
 
     useEffect(() => {
@@ -24,8 +24,20 @@ export default function ProductListing() {
             const lureFilter = location?.state?.filterState?.lure
             if (lureFilter !== 0 && lureFilter !== undefined) {
                 const regex = new RegExp(location.state.filterState.lure, "i");
-                filteredLures = allLures.filter(lure => regex.test(lure.name));
+                filteredLures = filteredLures.filter(lure => regex.test(lure.name));
             }
+            const maxPriceFilter = parseInt(location?.state?.filterState?.max_price);
+            if (maxPriceFilter && maxPriceFilter !== 0 && typeof maxPriceFilter === "number" && maxPriceFilter !== undefined) {
+                const variantsLowerThanMaxPrice = variants?.filter(variant => variant.cost <= maxPriceFilter);
+                filteredLures = filteredLures.filter(lure => variantsLowerThanMaxPrice.some(variant => variant.lure_id === lure.id))
+            }
+
+            const minPriceFilter = parseInt(location?.state?.filterState?.max_price);
+            if (minPriceFilter && minPriceFilter !== 0 && typeof minPriceFilter === "number" && minPriceFilter !== undefined) {
+                const variantsLowerThanMinPrice = variants?.filter(variant => variant.cost <= minPriceFilter);
+                filteredLures = filteredLures.filter(lure => variantsLowerThanMinPrice.some(variant => variant.lure_id === lure.id))
+            }
+
             setLures(allLures);
             setDisplay(filteredLures);
         }
