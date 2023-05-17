@@ -35,7 +35,7 @@ export default function SearchBar(props) {
     const clearSearchFilter = () => {
         setFilterState({
             ...filterState,
-            "lure": filterState
+            "lure": ""
         })
         navigate("/products", {
             "state": {
@@ -88,7 +88,7 @@ export default function SearchBar(props) {
                             <div className="w-96 rounded border border-gray-200 bg-white">
                                 <header className="flex items-center justify-between p-4">
                                     <span className="text-sm text-gray-700">
-                                        The highest price is $600
+                                        The highest price is $
                                     </span>
 
                                     <button
