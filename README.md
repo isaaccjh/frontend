@@ -8,7 +8,7 @@ Zerek is an online store dedicated to selling fishing lures and related products
 
 ### Customers
 
-A live demo for customers can be accessed [here](https://www.example.com/customer-demo).
+A live demo for customers can be accessed [here](https://animated-bombolone-f50579.netlify.app/).
 
 **Test Account:**
 
@@ -17,7 +17,7 @@ A live demo for customers can be accessed [here](https://www.example.com/custome
 
 ### Admin/Shop Owners
 
-A live demo for admin/shop owners can be accessed [here](https://www.example.com/admin-demo).
+A live demo for admin/shop owners can be accessed [here](https://tgc-project3-express.onrender.com/).
 
 **Test Account:**
 
