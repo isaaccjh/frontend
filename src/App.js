@@ -22,6 +22,7 @@ import Logout from "./pages/Logout";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 import Register from "./pages/Register";
+import Home from "./pages/Home";
 
 const App = () => {
 
@@ -32,6 +33,11 @@ const App = () => {
           <CartProvider>
             <Navbar />
             <Routes>
+              <Route path="/" element={
+                <LureProvider>
+                  <Home />
+                </LureProvider>
+              } />
               <Route path="/products" element={
                 <LureProvider>
                   <ProductListing />
@@ -46,7 +52,6 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/logout" element={<Logout />} />
               <Route path="/register" element={<Register />} />
-
               <Route path="/cart" element={<Cart />} />
             </Routes>
             <Footer />

@@ -30,10 +30,19 @@
   height: 100%;
   width: 100vw;
 }
+.home-page-bg {
+  background-image: url("https://cdn.discordapp.com/attachments/1008571027565072494/1108579523882139698/isaaccjh_cool_fishing_adventure_background_yellow_and_black_8k_712e1dcf-ef4d-47e6-964f-b057b523fdee.png");
+  background-color: none !important; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100vw;
+}
 
 .logo {
   margin: 0 !important;
   padding: 0 !important;
 }
+
 
 

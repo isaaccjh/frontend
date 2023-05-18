@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { MdKeyboardArrowDown, MdOutlineSearch } from "react-icons/md";
 
 export default function SearchBar(props) {
-    const [filter, setFilter] = useState(false);
+    const [priceFilter, setPriceFilter] = useState(false);
+    const [variantFilter, setVariantFilter] = useState(false);
     const [filterState, setFilterState] = useState({
         "lure": "",
         "max_price": 0,
@@ -32,42 +33,23 @@ export default function SearchBar(props) {
         })
     }
 
-    const clearSearchFilter = () => {
+    const clearFilter = () => {
         setFilterState({
-            ...filterState,
-            "lure": ""
-        })
-        navigate("/products", {
-            "state": {
-                "filterState": filterState
-            }
-        })
-    }
-
-    const clearVariantFilter = () => {
-        setFilterState({
-            ...filterState,
-            "min_variants": 0,
-            "max_variants": 0
-        })
-        navigate("/products", {
-            "state": {
-                "filterState": filterState
-            }
-        })
-    }
-
-    const clearPriceFilter = () => {
-        setFilterState({
-            ...filterState,
+            "lure": "",
+            "max_price": 0,
             "min_price": 0,
-            "max_price": 0
+            "max_variants": 0,
+            "min_variants": 0
         })
         navigate("/products", {
             "state": {
                 "filterState": filterState
             }
         })
+    }
+
+    const togglePriceFilter = () => {
+        setPriceFilter(!priceFilter)
     }
 
     return (<>
@@ -75,29 +57,20 @@ export default function SearchBar(props) {
             <div className="flex gap-8 mt-3">
                 <div className="relative">
                     <details className="group [&_summary::-webkit-details-marker]:hidden">
-                        <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+                        <summary onClick={togglePriceFilter} className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
                             <span className="text-sm font-medium"> Price </span>
                             <span className="transition group-open:-rotate-180">
                                 <MdKeyboardArrowDown />
                             </span>
                         </summary>
 
-                        <div
-                            className="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2"
-                        >
+                        <div className="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
                             <div className="w-96 rounded border border-gray-200 bg-white">
                                 <header className="flex items-center justify-between p-4">
                                     <span className="text-sm text-gray-700">
                                         The highest price is $
                                     </span>
-
-                                    <button
-                                        type="button"
-                                        className="text-sm text-gray-900 underline underline-offset-4"
-                                        onClick={clearPriceFilter}
-                                    >
-                                        Reset
-                                    </button>
+                                    <span className="text-sm text-gray-900 underline underline-offset-4"></span>
                                 </header>
 
                                 <div className="border-t border-gray-200 p-4">
@@ -153,13 +126,10 @@ export default function SearchBar(props) {
                                         The max amount of variants is
                                     </span>
 
-                                    <button
-                                        type="button"
+                                    <span
                                         className="text-sm text-gray-900 underline underline-offset-4"
-                                        onClick={clearVariantFilter}
                                     >
-                                        Reset
-                                    </button>
+                                    </span>
                                 </header>
 
                                 <div className="border-t border-gray-200 p-4">
@@ -209,7 +179,7 @@ export default function SearchBar(props) {
                     </button>
                 </div>
                 <div className="hover:bg-yellow-400 rounded-lg p-2 mt-1">
-                    <button onClick={clearSearchFilter} className="hover:underline">Clear Filter</button>
+                    <button onClick={clearFilter} className="hover:underline">Clear Filter</button>
                 </div>
             </div>
         </div>

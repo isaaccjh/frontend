@@ -53,6 +53,7 @@ export default function Navbar() {
     };
 
 
+
     return (<>
         <header className="border-b border-gray-100 sticky top-0 z-50">
             <div

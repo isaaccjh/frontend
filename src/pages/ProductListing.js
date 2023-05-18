@@ -67,7 +67,7 @@ export default function ProductListing() {
             setDisplay(filteredLures);
         }
         getProducts();
-    }, [context, location])
+    }, [context, location, variants])
 
     useEffect(() => {
         async function getVariants() {
