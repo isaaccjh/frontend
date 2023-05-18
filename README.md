@@ -99,3 +99,22 @@ The Ecommerce Shop is built using the following technologies:
 | 5. Click the "Checkout" button.                                                                                                           |
 | 7. Check if the order details match the entered information.                                                                              |
 | **Expected Result:** The user can complete the checkout process, and an order confirmation page is displayed with accurate order details. |
+
+## Acknowledgements
+
+- [HyperUI](https://www.hyperui.dev/)
+  - Used code here for most of the components
+- [BadAngling](https://badangling.com/tackle-advice/a-guide-to-fishing-hook-sizes-and-types/)
+  - Used for Hooks and type of lures information
+- [stack overflow](https://stackoverflow.com/questions/72550231/incorrect-date-value-2022-06-11t000000-000z-for-column-date-at-row-1)
+  - Used for debugging and some code help
+- [Stripe Documentation](https://stripe.com/docs/libraries/stripejs-esmodule)
+  - Used for all stripe related stuff
+- [Bootstrap Icons](https://icons.getbootstrap.com/)
+  - Icons
+- [ChatGPT](https://chat.openai.com/)
+  - Debugging
+  - Some code help
+  - Readme
+- [Midjourney](https://www.midjourney.com/home/?callbackUrl=%2Fapp%2F)
+  - Image Generation
