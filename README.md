@@ -56,13 +56,23 @@ The Ecommerce Shop is built using the following technologies:
 
 ## Test Cases
 
-| Test Case: User Login                                                                                  |
+| Test Case: User Login                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------- |
+| **Description:** Verify that users can successfully login on the website.                                           |
+| **Test Steps:**                                                                                                     |
+| 1. Open the website's login page.                                                                                   |
+| 2. Fill in the required fields with valid information (email: dog@dog.com, password: dog).                          |
+| 3. Click the "Login" button.                                                                                        |
+| 4. Verify that the user is redirected to a product page.                                                            |
+| **Expected Result:** User login is successful, and the user's information is stored accurately in the profile page. |
+
+| Test Case: Product Search                                                                              |
 | ------------------------------------------------------------------------------------------------------ |
-| **Description:** Verify that users can successfully login on the website.                              |
+| **Description:** Validate the search functionality to ensure users can find products effectively.      |
 | **Test Steps:**                                                                                        |
-| 1. Open the website's registration page.                                                               |
-| 2. Fill in the required fields with valid information (e.g., name, email, password).                   |
-| 3. Click the "Register" button.                                                                        |
-| 4. Verify that the user is redirected to a confirmation page.                                          |
-| 5. Check if the user's information is saved correctly in the database.                                 |
-| **Expected Result:** User registration is successful, and the user's information is stored accurately. |
+| 1. Enter a specific product name or keyword in the search bar.                                         |
+| 2. Click the search button.                                                                            |
+| 3. Verify that the search results page is displayed.                                                   |
+| 4. Check if the displayed results are relevant to the entered search query.                            |
+| 5. Repeat the search using different keywords and verify the results each time.                        |
+| **Expected Result:** The search functionality returns relevant products based on the entered keywords. |
