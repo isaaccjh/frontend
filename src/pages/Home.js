@@ -40,7 +40,7 @@ export default function Home() {
                     <div className="mt-8 flex flex-wrap justify-center gap-4 bg-transparent">
                         <a
                             className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-[#252525] shadow hover:bg-indigo-200 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
-                            href="/get-started"
+                            href="/products"
                         >
                             Start Shopping!
                         </a>
