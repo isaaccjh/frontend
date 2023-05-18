@@ -10,7 +10,7 @@ export default function Logout() {
     const navigate = useNavigate();
     useEffect(() => {
         const logout = async () => {
-           const response = await context.logout();
+            const response = await context.logout();
             if (response === 'Logged out') {
                 localStorage.removeItem("refreshToken");
                 localStorage.removeItem("accessToken");
@@ -18,7 +18,7 @@ export default function Logout() {
             navigate("/login");
         }
         logout();
-        
+
     }, [context, navigate])
 
     return (<>
