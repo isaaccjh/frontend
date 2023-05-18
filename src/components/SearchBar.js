@@ -29,7 +29,7 @@ export default function SearchBar(props) {
         navigate("/products", {
             "state": {
                 "filterState": filterState
-            }
+            },
         })
     }
 
