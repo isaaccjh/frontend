@@ -41,7 +41,17 @@ export default function ProductListing() {
             }
             const minVariantFilter = parseInt(location?.state?.filterState?.min_variants)
             if (minVariantFilter && minVariantFilter !== 0 && typeof minVariantFilter === "number" && minVariantFilter !== undefined) {
-
+                const lureIdCounter = {};
+                variants.forEach(variant => {
+                    lureIdCounter[variant.lure_id] = (lureIdCounter[variant.lure_id] || 0) + 1;
+                });
+                for (let id in lureIdCounter) {
+                    console.log("id:", id, lureIdCounter[id])
+                    if (lureIdCounter[id] < minVariantFilter) {
+                        console.log(id);
+                        filteredLures = filteredLures.filter(lure => parseInt(id) !== lure.id)
+                    }
+                };
             }
             const maxVariantFilter = parseInt(location?.state?.filterState?.max_variants)
             if (maxVariantFilter && maxVariantFilter !== 0 && typeof maxVariantFilter === "number" && maxVariantFilter !== undefined) {
