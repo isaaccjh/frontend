@@ -46,8 +46,9 @@ export default function Profile() {
                     <div className="mt-2">ID: {userDetails?.id}</div>
                     <div className="mt-2">Email: {userDetails?.email}</div>
                 </div>
-                <h1 className="text-xl text-bold p-3 pl-0">Orders</h1>
             </div>
+            <h1 className="text-xl text-bold p-3 pl-0">Orders</h1>
+
             {userOrders && userOrders.length !== 0 ?
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-xs text-left text-gray-700">
