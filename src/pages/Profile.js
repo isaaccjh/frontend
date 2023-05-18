@@ -45,11 +45,6 @@ export default function Profile() {
                 <div className="p-3">
                     <div className="mt-2">ID: {userDetails?.id}</div>
                     <div className="mt-2">Email: {userDetails?.email}</div>
-                    <div className="mt-2">{userDetails?.username ? `Username: ${userDetails?.username}` : null}</div>
-                    <div className="mt-2">{userDetails?.first_name ? `First Name: ${userDetails?.first_name}` : null}</div>
-                    <div className="mt-2">{userDetails?.last_name ? `Last Name: ${userDetails?.last_name}` : null}</div>
-                    <div className="mt-2">{userDetails?.contact_number ? `Contact Number: ${userDetails?.contact_number}` : null}</div>
-
                 </div>
                 <h1 className="text-xl text-bold p-3 pl-0">Orders</h1>
             </div>
