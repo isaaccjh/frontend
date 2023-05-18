@@ -23,17 +23,21 @@ export default function UserProvider(props) {
 
             } catch (e) {
                 console.log(e);
-            }   
+            }
         },
         getProfile: async () => {
-            const headers = {
-                'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+            try {
+                const headers = {
+                    'Authorization': `Bearer ${localStorage.getItem("accessToken")}`
+                }
+                const config = {
+                    headers: headers
+                }
+                const response = await axios.get(`${url}/users/profile`, config);
+                return response.data;
+            } catch (e) {
+                return "Not logged in"
             }
-            const config = {
-                headers: headers
-            }
-            const response = await axios.get(`${url}/users/profile`, config);
-            return response.data;
         },
         logout: async () => {
             const refreshToken = localStorage.getItem("refreshToken");
@@ -47,7 +51,7 @@ export default function UserProvider(props) {
             }
         },
         checkIfLoggedIn: () => {
-            return localStorage.getItem("accessToken") && localStorage.getItem("accessToken") !== undefined  ? true : false; 
+            return localStorage.getItem("accessToken") && localStorage.getItem("accessToken") !== undefined ? true : false;
         },
         getOrdersByUserId: async (userId) => {
             const response = await axios.get(`${url}/orders/${userId}`);
@@ -57,7 +61,7 @@ export default function UserProvider(props) {
 
 
     return (
-        <UserContext.Provider value={ userContexts }>
+        <UserContext.Provider value={userContexts}>
             {props.children}
         </UserContext.Provider>
     )

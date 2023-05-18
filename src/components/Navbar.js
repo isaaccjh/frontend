@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
-import { easeInOut, useAnimate } from "framer-motion";
+import { useAnimate } from "framer-motion";
 import jwtDecode from "jwt-decode";
 
 
@@ -64,7 +64,7 @@ export default function Navbar() {
                         <RxHamburgerMenu className="h-6 w-6" />
                     </button>
 
-                    <Link to="/home" className="flex items-center">
+                    <Link to="/" className="flex items-center">
                         <span className="inline-block h-14 w-32 rounded-lg top-0"><img className="bg-transparent h-[70px] scale-[1.2]" src={Logo} /></span>
                     </Link>
                 </div>

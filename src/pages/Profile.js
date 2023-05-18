@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import "../index.css"
 
 import UserContext from "../contexts/UserContext";
@@ -12,10 +12,17 @@ export default function Profile() {
     const [userDetails, setUserDetails] = useState({});
     const [userOrders, setUserOrders] = useState([]);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         const getProfileDetails = async () => {
             const details = await context.getProfile();
-            setUserDetails(details);
+            if (details !== "Not logged in") {
+                setUserDetails(details);
+            } else {
+                navigate("/login");
+            }
+
         }
 
         getProfileDetails();
