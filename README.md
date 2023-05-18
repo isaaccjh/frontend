@@ -18,6 +18,8 @@ The Ecommerce Shop includes the following key features:
 
 5. **Order Management**: Administrators have access to an order management system to process orders, update order status, and manage inventory.
 
+![SQL Database](sqldb.png)
+
 ## Tech Stack
 
 The Ecommerce Shop is built using the following technologies:
