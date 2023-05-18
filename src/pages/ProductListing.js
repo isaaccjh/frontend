@@ -84,7 +84,7 @@ export default function ProductListing() {
                 <div>
                     <ul className="mt-4 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
                         {display.map(p => (
-                            <li>
+                            <li className="hover:scale-[1.1]">
                                 <ProductCard
                                     product={p}
                                     variants={variants.filter(v => v.lure_id === p.id)}

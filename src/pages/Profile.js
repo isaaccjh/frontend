@@ -22,7 +22,6 @@ export default function Profile() {
             } else {
                 navigate("/login");
             }
-
         }
 
         getProfileDetails();
@@ -41,16 +40,19 @@ export default function Profile() {
 
     return (<>
         <div className="p-5">
-            <h1 className="text-xl text-bold">Profile Details</h1>
-            <div>
-                <div>ID: {userDetails?.id}</div>
-                <div>Username: {userDetails?.username ? userDetails?.username : null}</div>
-                <div>First Name: {userDetails?.first_name ? userDetails?.first_name : null}</div>
-                <div>Last Name : {userDetails?.last_name ? userDetails?.last_name : null}</div>
-                <div>Contact Number:{userDetails?.contact_number ? userDetails?.contact_number : null}</div>
-                <div>Email: {userDetails?.email}</div>
+            <div className="border rounded-lg">
+                <h1 className="text-xl text-bold p-3 m-3 underline">Profile Details</h1>
+                <div className="p-3">
+                    <div className="mt-2">ID: {userDetails?.id}</div>
+                    <div className="mt-2">Email: {userDetails?.email}</div>
+                    <div className="mt-2">{userDetails?.username ? `Username: ${userDetails?.username}` : null}</div>
+                    <div className="mt-2">{userDetails?.first_name ? `First Name: ${userDetails?.first_name}` : null}</div>
+                    <div className="mt-2">{userDetails?.last_name ? `Last Name: ${userDetails?.last_name}` : null}</div>
+                    <div className="mt-2">{userDetails?.contact_number ? `Contact Number: ${userDetails?.contact_number}` : null}</div>
+
+                </div>
+                <h1 className="text-xl text-bold p-3 pl-0">Orders</h1>
             </div>
-            <h1 className="text-xl text-bold p-3 pl-0">Orders</h1>
             {userOrders && userOrders.length !== 0 ?
                 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
                     <table className="w-full text-xs text-left text-gray-700">

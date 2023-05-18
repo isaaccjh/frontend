@@ -1,70 +1,33 @@
-# Getting Started with Create React App
+## Project Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Zerek is an online store dedicated to selling fishing lures and related products. The store aims to provide fishing enthusiasts with a convenient and user-friendly shopping experience for all their lure needs. Whether customers are beginners or experienced anglers, the Ecommerce Lure Store offers a wide range of high-quality lures from various brands to cater to their preferences and fishing styles.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+The Ecommerce Shop includes the following key features:
 
-### `npm start`
+1. **Product Catalog**: The shop offers a wide range of products that customers can browse and search for.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. **User Accounts**: Customers can create accounts, log in, and manage their profiles, including order history and shipping addresses.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. **Shopping Cart**: Customers can add products to their shopping cart, update quantities, and proceed to checkout.
 
-### `npm test`
+4. **Checkout Process**: The shop provides a secure checkout process, allowing customers to enter shipping and payment information.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. **Order Management**: Administrators have access to an order management system to process orders, update order status, and manage inventory.
 
-### `npm run build`
+6. **Product Reviews**: Customers can leave reviews and ratings for products, helping other users make informed decisions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The Ecommerce Shop is built using the following technologies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Front-end**: HTML, CSS, JavaScript, React, Tailwind, Framer Motion
 
-### `npm run eject`
+- **Back-end**: Node.js with express, JSON Web Token, CORS (Cross-Origin Resource Sharing), Bookshelf (ORM Library), Knex (SQL Query Builder), Cloudinary, Caolan Forms, Moment, Handlebars
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Database**: MySQL for testing, PostgreSQL for deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Payment Gateway**: Integrated Stripe for secure online transactions.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Hosting**: [Render](www.render.com) for backend, [Netlify](www.netlify.com) for frontend.
