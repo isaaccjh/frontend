@@ -76,3 +76,26 @@ The Ecommerce Shop is built using the following technologies:
 | 4. Check if the displayed results are relevant to the entered search query.                            |
 | 5. Repeat the search using different keywords and verify the results each time.                        |
 | **Expected Result:** The search functionality returns relevant products based on the entered keywords. |
+
+| Test Case: Add to Cart                                                                         |
+| ---------------------------------------------------------------------------------------------- |
+| **Description:** Ensure that users can add products to their shopping cart.                    |
+| **Test Steps:**                                                                                |
+| 1. Navigate to the product page.                                                               |
+| 2. Select the desired product variation (if applicable).                                       |
+| 3. Click the "Add to Cart" button.                                                             |
+| 4. Verify that a success message appears, indicating that the item has been added to the cart. |
+| 5. Access the shopping cart page and check if the added product is listed.                     |
+| **Expected Result:** The selected product is successfully added to the shopping cart.          |
+
+| Test Case: Checkout Process                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Description:** Verify that users can complete the checkout process successfully.                                                        |
+| **Test Steps:**                                                                                                                           |
+| 1. Open the shopping cart page.                                                                                                           |
+| 2. Review the listed products and quantities.                                                                                             |
+| 3. Click the "Checkout" button.                                                                                                           |
+| 4. Fill in the required fields with valid customer information (e.g., shipping address, payment details).                                 |
+| 5. Click the "Checkout" button.                                                                                                           |
+| 7. Check if the order details match the entered information.                                                                              |
+| **Expected Result:** The user can complete the checkout process, and an order confirmation page is displayed with accurate order details. |
