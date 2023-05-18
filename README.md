@@ -4,6 +4,20 @@ Zerek is an online store dedicated to selling fishing lures and related products
 
 ![Zerek's Home Page](mockup.png)
 
+### Test Accounts
+
+Live demo for customers can be accessed here.
+
+- Test Account:
+  -Email: dog@dog.com  
+  -Password: dog
+
+Live demo for admin/shop owners can be accessed here.
+
+-Test Account:
+-Email: kitty@kittyman.com  
+-Password: Kitty@123
+
 ## Features
 
 The Ecommerce Shop includes the following key features:
