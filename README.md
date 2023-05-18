@@ -2,6 +2,8 @@
 
 Zerek is an online store dedicated to selling fishing lures and related products. The store aims to provide fishing enthusiasts with a convenient and user-friendly shopping experience for all their lure needs. Whether customers are beginners or experienced anglers, the Ecommerce Lure Store offers a wide range of high-quality lures from various brands to cater to their preferences and fishing styles.
 
+![Zerek's Home Page](mockup.png)
+
 ## Features
 
 The Ecommerce Shop includes the following key features:
@@ -15,8 +17,6 @@ The Ecommerce Shop includes the following key features:
 4. **Checkout Process**: The shop provides a secure checkout process, allowing customers to enter shipping and payment information.
 
 5. **Order Management**: Administrators have access to an order management system to process orders, update order status, and manage inventory.
-
-6. **Product Reviews**: Customers can leave reviews and ratings for products, helping other users make informed decisions.
 
 ## Tech Stack
 
