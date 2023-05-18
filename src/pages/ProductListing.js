@@ -46,16 +46,22 @@ export default function ProductListing() {
                     lureIdCounter[variant.lure_id] = (lureIdCounter[variant.lure_id] || 0) + 1;
                 });
                 for (let id in lureIdCounter) {
-                    console.log("id:", id, lureIdCounter[id])
                     if (lureIdCounter[id] < minVariantFilter) {
-                        console.log(id);
                         filteredLures = filteredLures.filter(lure => parseInt(id) !== lure.id)
                     }
                 };
             }
             const maxVariantFilter = parseInt(location?.state?.filterState?.max_variants)
             if (maxVariantFilter && maxVariantFilter !== 0 && typeof maxVariantFilter === "number" && maxVariantFilter !== undefined) {
-
+                const lureIdCounter = {};
+                variants.forEach(variant => {
+                    lureIdCounter[variant.lure_id] = (lureIdCounter[variant.lure_id] || 0) + 1;
+                });
+                for (let id in lureIdCounter) {
+                    if (lureIdCounter[id] > maxVariantFilter) {
+                        filteredLures = filteredLures.filter(lure => parseInt(id) !== lure.id)
+                    }
+                };
             }
             setLures(allLures);
             setDisplay(filteredLures);
