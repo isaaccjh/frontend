@@ -38,6 +38,33 @@ The Ecommerce Shop includes the following key features:
 
 5. **Order Management**: Administrators have access to an order management system to process orders, update order status, and manage inventory.
 
+## Design Choices
+
+### Colors:
+- Secondary Color: White (`#FFFFFF`)
+  - Rationale: White is used as the secondary color to provide a clean and modern aesthetic to the website. It enhances readability and allows the fishing lure product images and descriptions to stand out prominently, making it easy for users to browse and make informed purchase decisions.
+
+- Primary Color: Tailwind's Yellow-400 (`#FACC15`)
+  - Rationale: The choice of yellow as the primary color brings a vibrant and energetic feel to the website, which resonates well with the target audience of fishing enthusiasts. Yellow is also often associated with sunshine and positivity, creating a welcoming and engaging atmosphere for users.
+
+
+
+### Fonts:
+- Font Family: Nunito
+  - Rationale: Nunito is a clean, versatile, and easy-to-read font that offers excellent legibility across different screen sizes. Its rounded edges and balanced letterforms add a friendly and approachable touch to the overall design. Nunito's modern yet timeless appeal aligns well with the fishing lure ecommerce website, ensuring a pleasant reading experience for users.
+
+### Images:
+- Style of Images: High-quality product images with white background
+  - Rationale: To showcase the fishing lures effectively, high-quality product images are used. The images feature the lures against a white background. This approach helps the target audience visualize the lures in real fishing scenarios, enhancing their appeal and increasing the chances of conversion.
+
+### Layout:
+- Clean and Intuitive Design:
+  - Rationale: The layout of the website is designed to be clean, simple, and intuitive. The emphasis is on providing a seamless browsing experience for users, enabling them to find and explore fishing lures effortlessly. The use of ample whitespace and clear typography ensures that the content is easy to read and navigate. The intuitive design facilitates a smooth user journey, leading to increased engagement and conversions.
+
+- Mobile Responsiveness:
+  - Rationale: With the increasing use of mobile devices, ensuring a responsive design is crucial. The layout is optimized to adapt to different screen sizes and resolutions, providing a consistent and user-friendly experience across desktop, tablet, and mobile devices. This approach allows fishing enthusiasts to access the website and make purchases conveniently, regardless of the device they are using.
+
+
 
 ## Target Audience
 
