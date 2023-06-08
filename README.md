@@ -71,6 +71,7 @@ In the frontend organization, the application is structured using the following 
 - **Home**: The main page that users will enter upon entering the website. Has buttons to bring user to product listings, and certain hot products. 
 - **Product**: The page that users will be redirected to upon login, register, checkout success.
 - **Product Page**: Displays the list of available colour variants for as well as allowing for users to add to cart. Users can get here by clicking on the product in the product page.
+- **Profile Page**: Displays the list of orders a user have, along with the user's ID and email address.
 - **Cart**: Renders the user's cart with a list of products, allowing for quantity adjustments and removal of items. Also has a checkout button. Users can get to here by clicking on the shopping bag logo in the navbar.
 - **Checkout**: Provides a form for users to enter their shipping information and payment details to complete the purchase, redirects the user to product page upon success. Users can get here by clicking the checkout button
 
