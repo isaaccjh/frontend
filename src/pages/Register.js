@@ -38,6 +38,8 @@ export default function Register() {
                 "password": formState.password,
                 "email": formState.email
             });
+
+            navigate("/login");
         } else {
             toast.error("Please fill in all fields!")
         }
