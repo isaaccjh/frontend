@@ -71,6 +71,17 @@ These are individuals who participate in fishing tournaments and competitions or
 - We provide filters and categories for lures based on lure type, and other variables like price points and number of variants to help professionals find what they need quickly.
 - New and trending lures are highlighted on our site, keeping competitive anglers updated with the latest developments in the lure industry.
 
+## User Stories
+### Product Catalog
+- As a user, I want to be able to view a list of fishing lures available for purchase.
+- As a user, I want to be able to search for specific fishing lures by name
+- As a user, I want to be able to filter the fishing lures based on different attributes such as price and number of variants
+- As a user, I want to see detailed information about each fishing lure, including its product descriptions and colour choices
+
+### User Account
+- As a user, I want to be able to create a new account using my email address and password.
+- As a user, I want to be able to log in to my account and view my order history.
+
 ![SQL Database](sqldb.png)
 
 ## Tech Stack
