@@ -6,8 +6,9 @@ const url = "https://tgc-project3-express.onrender.com/api";
 export default function UserProvider(props) {
 
     const userContexts = {
-        registerUser: async () => {
-            const response = await axios.post(`${url}/users/register`);
+        registerUser: async (registerInfo) => {
+            console.log(registerInfo);
+            const response = await axios.post(`${url}/users/register`, registerInfo);
             return response.data;
         },
         loginUser: async (data) => {

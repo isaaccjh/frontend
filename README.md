@@ -38,6 +38,39 @@ The Ecommerce Shop includes the following key features:
 
 5. **Order Management**: Administrators have access to an order management system to process orders, update order status, and manage inventory.
 
+
+## Target Audience
+
+Our e-commerce platform primarily targets two groups of fishing enthusiasts who have a specific interest in lures:
+
+### 1. Recreational Anglers
+
+This audience group includes both novice and seasoned hobbyists who enjoy fishing in their leisure time.
+
+**Pain Points:**
+- Difficulty in finding a wide variety of fishing lures in one place.
+- Lack of detailed information about each lure, such as what species they are best suited for and in what conditions.
+- Inexperience or uncertainty in selecting the right lure based on their needs and local fishing conditions.
+
+**How our platform caters to them:**
+- We provide an extensive range of lures, from classics to the latest in fishing lure technology.
+- Detailed product descriptions are provided for each lure.
+
+
+### 2. Competitive Anglers
+
+These are individuals who participate in fishing tournaments and competitions or are dedicated enthusiasts aiming to improve their catch rate.
+
+**Pain Points:**
+- Seeking high-performance lures to gain competitive edge.
+- Finding specific lures that align with their refined fishing techniques and preferences.
+- Staying updated with the latest lure trends and technology.
+
+**How our platform caters to them:**
+- Our shop features a selection of premium and professional-grade lures, designed to improve success rate.
+- We provide filters and categories for lures based on lure type, and other variables like price points and number of variants to help professionals find what they need quickly.
+- New and trending lures are highlighted on our site, keeping competitive anglers updated with the latest developments in the lure industry.
+
 ![SQL Database](sqldb.png)
 
 ## Tech Stack
