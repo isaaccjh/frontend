@@ -121,6 +121,9 @@ These are individuals who participate in fishing tournaments and competitions or
 - As a user, I want to be able to create a new account using my email address and password.
 - As a user, I want to be able to log in to my account and view my order history.
 
+## Mockup
+![Wireframe](wireframe.png)
+
 ![SQL Database](sqldb.png)
 
 ## Tech Stack
